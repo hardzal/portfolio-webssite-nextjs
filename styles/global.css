@@ -120,3 +120,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+a:link {
+  color: #1a73e8; /* Unvisited link color */
+  text-decoration: none;
+}
+
+a:visited {
+  color: #6a0dad; /* Visited link color */
+}
+
+a:hover {
+  color: #ff4500; /* Mouse over link color */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:active {
+  color: #fdf91e; /* Active (clicked) link color */
+}
