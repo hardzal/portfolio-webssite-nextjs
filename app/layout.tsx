@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import { Poppins } from "next/font/google";
+import { ThemeProvider } from "@/components/utils/theme-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,13 +23,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
-        <div className="mx-auto w-2/3">
-          <Header />
-          {children}
-        </div>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.className} transition-colors duration-300`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="mx-auto w-2/3">
+            <Header />
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

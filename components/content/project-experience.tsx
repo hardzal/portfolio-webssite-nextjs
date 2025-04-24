@@ -16,7 +16,7 @@ export default function ProjectExperience() {
       <h2 className={"font-semibold text-3xl mb-5"}>My Projects</h2>
       <div className="grid grid-cols-2 gap-10">
         <Card>
-          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2 bg-gray-100">
+          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
             <Image
               src={"/photos/project-management.jpg"}
               alt={"Thumbnail project"}
@@ -33,19 +33,39 @@ export default function ProjectExperience() {
               excepturi facere!
             </CardDescription>
             <div className={"flex flex-row gap-3 mt-3"}>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Reactjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Nodejs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Expressjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Postgresql
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Tailwind
               </span>
             </div>
@@ -75,7 +95,7 @@ export default function ProjectExperience() {
           </CardFooter>
         </Card>
         <Card>
-          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2 bg-gray-100">
+          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
             <Image
               src={"/photos/project-management.jpg"}
               alt={"Thumbnail project"}
@@ -92,19 +112,39 @@ export default function ProjectExperience() {
               excepturi facere!
             </CardDescription>
             <div className={"flex flex-row gap-3 mt-3"}>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Reactjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Nodejs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Expressjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Postgresql
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Tailwind
               </span>
             </div>
@@ -134,7 +174,7 @@ export default function ProjectExperience() {
           </CardFooter>
         </Card>
         <Card>
-          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2 bg-gray-100">
+          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
             <Image
               src={"/photos/project-management.jpg"}
               alt={"Thumbnail project"}
@@ -151,19 +191,39 @@ export default function ProjectExperience() {
               excepturi facere!
             </CardDescription>
             <div className={"flex flex-row gap-3 mt-3"}>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Reactjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Nodejs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Expressjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Postgresql
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Tailwind
               </span>
             </div>
@@ -193,7 +253,7 @@ export default function ProjectExperience() {
           </CardFooter>
         </Card>
         <Card>
-          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2 bg-gray-100">
+          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
             <Image
               src={"/photos/project-management.jpg"}
               alt={"Thumbnail project"}
@@ -210,19 +270,39 @@ export default function ProjectExperience() {
               excepturi facere!
             </CardDescription>
             <div className={"flex flex-row gap-3 mt-3"}>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Reactjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Nodejs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Expressjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Postgresql
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Tailwind
               </span>
             </div>
@@ -252,7 +332,7 @@ export default function ProjectExperience() {
           </CardFooter>
         </Card>
         <Card>
-          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2 bg-gray-100">
+          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
             <Image
               src={"/photos/project-management.jpg"}
               alt={"Thumbnail project"}
@@ -269,19 +349,39 @@ export default function ProjectExperience() {
               excepturi facere!
             </CardDescription>
             <div className={"flex flex-row gap-3 mt-3"}>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Reactjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Nodejs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Expressjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Postgresql
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Tailwind
               </span>
             </div>
@@ -311,7 +411,7 @@ export default function ProjectExperience() {
           </CardFooter>
         </Card>
         <Card>
-          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2 bg-gray-100">
+          <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
             <Image
               src={"/photos/project-management.jpg"}
               alt={"Thumbnail project"}
@@ -328,19 +428,39 @@ export default function ProjectExperience() {
               excepturi facere!
             </CardDescription>
             <div className={"flex flex-row gap-3 mt-3"}>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Reactjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Nodejs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Expressjs
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Postgresql
               </span>
-              <span className={"bg-gray-100 p-2 text-xs rounded-2xl"}>
+              <span
+                className={
+                  "bg-gray-100 dark:bg-gray-800 p-2 text-xs rounded-2xl"
+                }
+              >
                 Tailwind
               </span>
             </div>

@@ -4,10 +4,15 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./button";
 import Image from "next/image";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Header() {
   return (
-    <div>
+    <div
+      className={
+        "fixed top-0 left-0 right-0 w-2/3 mx-auto z-30 bg-white dark:bg-gray-950 transition-colors duration-300"
+      }
+    >
       <div className={"flex flex-row py-5"}>
         <div className={"basis-1/2"}>
           <h1>MRi Zal</h1>
@@ -50,6 +55,7 @@ export default function Header() {
               <span>{"Download CV"}</span>
             </Button>
           </Link>
+          <ModeToggle />
           {/* <Link href={"/auth/login"}>Sign</Link> */}
         </nav>
       </div>

@@ -2,10 +2,10 @@
 import Image from "next/image";
 import React from "react";
 
-import AboutMe from "../content/AboutMe";
-import TechStack from "../content/TechStack";
-import WorkExperience from "../content/WorkExperience";
-import ProjectExperience from "../content/ProjectExperience";
+import AboutMe from "../content/about-me";
+import TechStack from "../content/tech-stack";
+import WorkExperience from "../content/work-experience";
+import ProjectExperience from "../content/project-experience";
 
 export default function HomeSection() {
   return (
