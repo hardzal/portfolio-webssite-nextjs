@@ -1,11 +1,9 @@
 import React from "react";
-import { Autoplay } from "swiper/modules";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
 import "@/styles/home.css";
+
 import Image from "next/image";
+import { Marquee } from "@devnomic/marquee";
+import "@/styles/marquee.css";
 
 export default function TechStack() {
   return (
@@ -13,10 +11,104 @@ export default function TechStack() {
       <h2 className={"text-3xl mt-5 mb-10 font-semibold"}>
         Tech Stack - Tools I use everyday
       </h2>
-      <Swiper
+      <Marquee
+        fade={true}
+        reverse={true}
+        pauseOnHover={true}
+        className="motion-reduce:overflow-auto gap-[5rem] [--duration:15s]"
+        innerClassName="motion-reduce:animate-none motion-reduce:first:hidden gap-[5rem] [--gap:5rem]"
+      >
+        <div
+          className={"flex flex-col items-center justify-center align-middle"}
+        >
+          <Image
+            src={"/skills/javascript.png"}
+            alt={"javascript"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Javascript</span>
+        </div>
+        <div className={"flex flex-col items-center justify-center"}>
+          <Image
+            src={"/skills/typescript.png"}
+            alt={"Typescript"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Typescript</span>
+        </div>
+        <div className={"flex flex-col items-center justify-center"}>
+          <Image
+            src={"/skills/express.png"}
+            alt={"express"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Express</span>
+        </div>
+        <div className={"flex flex-col items-center justify-center"}>
+          <Image
+            src={"/skills/golang.png"}
+            alt={"golang"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Golang</span>
+        </div>
+        <div className={"flex flex-col items-center justify-center"}>
+          <Image
+            src={"/skills/postgresql.png"}
+            alt={"postgresql"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Postgresql</span>
+        </div>
+        <div className={"flex flex-col items-center justify-center"}>
+          <Image
+            src={"/skills/laravel.png"}
+            alt={"laravel"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Laravel</span>
+        </div>
+        <div className={"flex flex-col items-center justify-center"}>
+          <Image
+            src={"/skills/python.png"}
+            alt={"python"}
+            width={64}
+            height={64}
+            className={
+              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+            }
+          />
+          <span>Python</span>
+        </div>
+      </Marquee>
+      {/* <Swiper
         // install Swiper modules
         modules={[Autoplay]}
-        spaceBetween={5}
+        spaceBetween={1}
         slidesPerView={5}
         autoplay={{
           delay: 1,
@@ -40,7 +132,7 @@ export default function TechStack() {
               alt={"javascript"}
               width={64}
               height={64}
-              className={"object-contain"}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
           </div>
           <span>Javascript</span>
@@ -52,6 +144,7 @@ export default function TechStack() {
               alt={"Typescript"}
               width={64}
               height={64}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
           </div>
           <span>Typescript</span>
@@ -63,6 +156,7 @@ export default function TechStack() {
               alt={"express"}
               width={64}
               height={64}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
           </div>
           <span>Express</span>
@@ -74,6 +168,7 @@ export default function TechStack() {
               alt={"golang"}
               width={64}
               height={64}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
           </div>
           <span>Golang</span>
@@ -85,6 +180,7 @@ export default function TechStack() {
               alt={"postgresql"}
               width={64}
               height={64}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
           </div>
           <span>Postgresql</span>
@@ -96,6 +192,7 @@ export default function TechStack() {
               alt={"laravel"}
               width={64}
               height={64}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
           </div>
           <span>Laravel</span>
@@ -107,11 +204,12 @@ export default function TechStack() {
               alt={"python"}
               width={64}
               height={64}
+              className={"object-contain dark:bg-gray-600 rounded-lg p-3"}
             />
             <span>Python</span>
           </div>
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
     </>
   );
 }

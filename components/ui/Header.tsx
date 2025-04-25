@@ -14,16 +14,17 @@ export default function Header() {
       }
     >
       <div className={"flex flex-row py-5"}>
-        <div className={"basis-1/2"}>
+        <div className={"basis-1/3"}>
           <h1>MRi Zal</h1>
         </div>
         <nav
           className={
-            "basis-1/2 flex flex-row justify-between items-center align-middle"
+            "basis-2/3 flex flex-row justify-between items-center align-middle"
           }
         >
-          <Link href={"#about"}>about</Link>
-          <Link href={"#projects"}>projects</Link>
+          <Link href={"#tech_stack"}>Tech Stack</Link>
+          <Link href={"#experience"}>Experience</Link>
+          <Link href={"#projects"}>Projects</Link>
           <Link href={"/blog"}>blog</Link>
           <Link href={"wa.me/+6287781383892"}>
             <Button

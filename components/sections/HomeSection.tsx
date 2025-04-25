@@ -13,17 +13,17 @@ export default function HomeSection() {
       <main className={"flex flex-row gap-5"}>
         <AboutMe />
       </main>
-      <div className={"my-10"}>
+      <div className={"my-10"} id={"tech_stack"}>
         <TechStack />
       </div>
 
       {/* /* <!-- Work Experience Section --> */}
-      <div className={"work-section mt-5"}>
+      <div className={"work-section mt-5"} id={"experience"}>
         <WorkExperience />
       </div>
 
       {/* <!-- Project Section --> */}
-      <div className="project-section my-5">
+      <div className="project-section my-5" id={"projects"}>
         <ProjectExperience />
       </div>
 
