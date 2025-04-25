@@ -10,21 +10,28 @@ import ProjectExperience from "../content/project-experience";
 export default function HomeSection() {
   return (
     <>
-      <main className={"flex flex-row gap-5"}>
+      <main className={"flex flex-row gap-5 mb-30"}>
         <AboutMe />
       </main>
-      <div className={"my-10"} id={"tech_stack"}>
-        <TechStack />
+
+      <div id={"tech_stack"}>
+        <div className={"mb-30"}>
+          <TechStack />
+        </div>
       </div>
 
       {/* /* <!-- Work Experience Section --> */}
-      <div className={"work-section mt-5"} id={"experience"}>
-        <WorkExperience />
+      <div id={"experience"}>
+        <div className={"work-section mb-30"}>
+          <WorkExperience />
+        </div>
       </div>
 
       {/* <!-- Project Section --> */}
-      <div className="project-section my-5" id={"projects"}>
-        <ProjectExperience />
+      <div id={"projects"}>
+        <div className="project-section mb-30">
+          <ProjectExperience />
+        </div>
       </div>
 
       <div

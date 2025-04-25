@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={"scroll-pt-28"}>
       <body className={`${poppins.className} transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
@@ -33,6 +33,7 @@ export default function RootLayout({
         >
           <div className="mx-auto w-2/3">
             <Header />
+            <div className={"h-30"}></div>
             {children}
           </div>
           <Footer />

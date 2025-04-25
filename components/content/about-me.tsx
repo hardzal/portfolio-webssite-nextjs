@@ -8,7 +8,7 @@ export default function AboutMe() {
     <>
       <section
         className={
-          "flex flex-col basis-1/3 justify-center align-middle items-center pt-50"
+          "flex flex-col basis-1/3 justify-center align-middle items-center"
         }
       >
         <Image

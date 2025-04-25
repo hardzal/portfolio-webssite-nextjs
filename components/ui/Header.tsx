@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <div
       className={
-        "fixed top-0 left-0 right-0 w-2/3 mx-auto z-30 bg-white dark:bg-gray-950 transition-colors duration-300"
+        "fixed top-0 left-0 right-0 w-2/3 mx-auto z-20 bg-white dark:bg-gray-950 transition-colors duration-300"
       }
     >
       <div className={"flex flex-row py-5"}>
@@ -26,7 +26,7 @@ export default function Header() {
           <Link href={"#experience"}>Experience</Link>
           <Link href={"#projects"}>Projects</Link>
           <Link href={"/blog"}>blog</Link>
-          <Link href={"wa.me/+6287781383892"}>
+          <Link href={"https://wa.me/+6287781383892"}>
             <Button
               className={
                 "bg-green-500 cursor-pointer text-white py-3 text-lg font-medium flex flex-row gap-2"

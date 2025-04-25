@@ -15,7 +15,7 @@ export default function TechStack() {
         fade={true}
         reverse={true}
         pauseOnHover={true}
-        className="motion-reduce:overflow-auto gap-[5rem] [--duration:15s]"
+        className="motion-reduce:overflow-auto gap-[5rem] [--duration:15s] overflow-x-hidden"
         innerClassName="motion-reduce:animate-none motion-reduce:first:hidden gap-[5rem] [--gap:5rem]"
       >
         <div

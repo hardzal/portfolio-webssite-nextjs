@@ -1,3 +1,7 @@
 ul.list-skill {
   margin-left: 20px !important;
 }
+
+ul.list-skill li {
+  margin-bottom: 7px;
+}
