@@ -15,6 +15,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Portfolio Website",
   description: "Website Portfolio as a Fullstack Developer",
+  viewport: "width=device-width, initial-scale=1", // responsive
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="mx-auto w-2/3">
+          <div className="mx-auto w-2/3 md:w-4/5">
             <Header />
             <div className={"h-30"}></div>
             {children}

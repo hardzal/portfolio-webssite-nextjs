@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function ProjectExperience() {
   return (
     <>
-      <h2 className={"font-semibold text-3xl mb-5"}>My Projects</h2>
+      <h2 className={"font-semibold text-3xl mb-10"}>My Projects</h2>
       <div className="grid grid-cols-2 gap-10">
         <Card>
           <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">

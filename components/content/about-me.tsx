@@ -48,7 +48,7 @@ export default function AboutMe() {
           <div className={"flex flex-row gap-5"}>
             <Button
               className={
-                "bg-green-500 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2"
+                "bg-green-500 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
               }
             >
               <Image
@@ -61,7 +61,7 @@ export default function AboutMe() {
             </Button>
             <Button
               className={
-                "bg-black cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2"
+                "bg-black cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
               }
             >
               <Image
