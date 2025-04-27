@@ -25,7 +25,7 @@ export default function AboutMe() {
         }
       >
         <div className={"flex flex-col gap-5"}>
-          <h1 className={"text-4xl font-semibold text-center"}>
+          <h1 className={"text-4xl font-semibold max-md:text-center"}>
             {"Hi, I'm Rizal"}
           </h1>
           <p className={"max-md:text-center text-lg"}>
@@ -38,7 +38,11 @@ export default function AboutMe() {
             efficient and user-friendly applications.
           </p>
 
-          <p className={"max-md:flex flex-row items-center justify-center"}>
+          <p
+            className={
+              "flex max-md:flex-row max-md:items-center max-md:justify-center"
+            }
+          >
             <MapPin className={"mr-3"} />
             <span>Depok, Sawangan, Indonesia</span>
           </p>
@@ -48,7 +52,7 @@ export default function AboutMe() {
           >
             <Button
               className={
-                "bg-green-500 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
+                "bg-green-500 hover:bg-green-400 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
               }
             >
               <Image
@@ -61,7 +65,7 @@ export default function AboutMe() {
             </Button>
             <Button
               className={
-                "bg-black cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
+                "bg-black cursor-pointer hover:bg-gray-700 text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 "
               }
             >
               <Image
