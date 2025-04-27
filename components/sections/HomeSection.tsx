@@ -10,7 +10,7 @@ import ProjectExperience from "../content/project-experience";
 export default function HomeSection() {
   return (
     <>
-      <main className={"flex flex-row gap-5 mb-30"}>
+      <main className={"flex md:flex-row flex-col gap-5 mb-30"}>
         <AboutMe />
       </main>
 

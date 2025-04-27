@@ -25,27 +25,27 @@ export default function AboutMe() {
         }
       >
         <div className={"flex flex-col gap-5"}>
-          <h1 className={"text-4xl font-semibold"}>{"Hi, I'm Rizal"}</h1>
-          <p className={""}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <h1 className={"text-4xl font-semibold text-center"}>
+            {"Hi, I'm Rizal"}
+          </h1>
+          <p className={"max-md:text-center text-lg"}>
+            Fullstack Developer & AI Enthusiast
           </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            iusto officiis ipsam autem eaque, nostrum natus dolorem assumenda
-            facere ad nisi numquam illum aperiam alias sunt ipsa! Reprehenderit,
-            perspiciatis consequatur? Cupiditate minus dolorem, necessitatibus
-            sapiente incidunt perferendis. Impedit accusamus, ea saepe, quaerat
-            adipisci iusto repellendus consectetur suscipit aperiam provident
-            repellat vel dicta explicabo, eveniet animi voluptatum. Sunt
-            deserunt debitis ipsum.
+          <p className={"max-md:text-center"}>
+            I am a Fullstack Developer with a passion for creating web
+            applications. I have experience in both frontend and backend
+            development, and I enjoy working with modern technologies to build
+            efficient and user-friendly applications.
           </p>
 
-          <p className={"flex"}>
+          <p className={"max-md:flex flex-row items-center justify-center"}>
             <MapPin className={"mr-3"} />
             <span>Depok, Sawangan, Indonesia</span>
           </p>
 
-          <div className={"flex flex-row gap-5"}>
+          <div
+            className={"flex flex-row gap-5 max-md:justify-center items-center"}
+          >
             <Button
               className={
                 "bg-green-500 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
