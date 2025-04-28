@@ -2,15 +2,15 @@
 import Image from "next/image";
 import React from "react";
 
-import AboutMe from "../content/about-me";
-import TechStack from "../content/tech-stack";
-import WorkExperience from "../content/work-experience";
-import ProjectExperience from "../content/project-experience";
+import AboutMe from "../content/HomeSection/about-me";
+import TechStack from "../content/HomeSection/tech-stack";
+import WorkExperience from "../content/HomeSection/work-experience";
+import ProjectExperience from "../content/HomeSection/project-experience";
 
 export default function HomeSection() {
   return (
     <>
-      <main className={"flex md:flex-row flex-col gap-5 mb-30"}>
+      <main className={"flex md:flex-row flex-col gap-5 mb-30 "}>
         <AboutMe />
       </main>
 
@@ -39,7 +39,7 @@ export default function HomeSection() {
           "my-15 flex flex-col items-center justify-center align-middle"
         }
       >
-        <h2 className={"text-3xl my-5 font-semibold"}>
+        <h2 className={"text-3xl my-5 font-semibold max-md:text-center"}>
           {"Let's build something together"}
         </h2>
         <p className={"text-sm"}>

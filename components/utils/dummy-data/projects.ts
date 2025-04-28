@@ -12,7 +12,7 @@ export const Projects = [
   {
     id: 2,
     title: "E-commerce Backend API",
-    images: "https://images.unsplash.com/photo-1581291519195-ef11498d1cf5",
+    images: "/photos/project-management.jpg",
     description:
       "A robust and scalable REST API for an e-commerce platform, handling authentication, product management, and order processing.",
     technologies: ["Nodejs", "Expressjs", "MongoDB", "JWT", "Docker"],
@@ -22,7 +22,7 @@ export const Projects = [
   {
     id: 3,
     title: "Real-Time Chat Application",
-    images: "https://images.unsplash.com/photo-1591696205602-2b6a06b03b5c",
+    images: "/photos/project-management.jpg",
     description:
       "A full-stack real-time chat application with private rooms, authentication, and online presence status.",
     technologies: ["Reactjs", "Nodejs", "Socket.io", "Expressjs", "Tailwind"],
@@ -42,7 +42,7 @@ export const Projects = [
   {
     id: 5,
     title: "Blog CMS Platform",
-    images: "https://images.unsplash.com/photo-1551033406-611cf9a28f73",
+    images: "/photos/project-management.jpg",
     description:
       "A content management system for creating, editing, and publishing blog posts with a rich text editor and media management.",
     technologies: ["Nextjs", "Strapi", "GraphQL", "Cloudinary", "Tailwind"],

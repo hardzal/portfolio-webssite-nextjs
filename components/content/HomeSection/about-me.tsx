@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { MapPin } from "lucide-react";
 
 export default function AboutMe() {
@@ -14,6 +14,10 @@ export default function AboutMe() {
         <Image
           src={`/photos/example.jpg`}
           alt={"My Profile Photo"}
+          style={{
+            maxWidth: "300px",
+            height: "auto",
+          }}
           width={300}
           height={300}
           className={"rounded-lg mx-auto b"}
@@ -24,7 +28,11 @@ export default function AboutMe() {
           "basis-2/3 flex flex-col items-center justify-center align-middle"
         }
       >
-        <div className={"flex flex-col gap-5"}>
+        <div
+          className={
+            "flex flex-col gap-5 max-sm:items-center max-sm:justify-center"
+          }
+        >
           <h1 className={"text-4xl font-semibold max-md:text-center"}>
             {"Hi, I'm Rizal"}
           </h1>

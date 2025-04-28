@@ -6,18 +6,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "../../ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { Projects } from "../utils/dummy-data/projects";
+import { Projects } from "../../utils/dummy-data/projects";
 
 export default function ProjectExperience() {
   return (
     <>
       <h2 className={"font-semibold text-3xl mb-10"}>My Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:overflow-hidden ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-md:w-full">
         {Projects.map((project, index) => (
-          <Card key={project.id + index}>
+          <Card
+            key={project.id + index}
+            className={"overflow-hidden text-wrap sm:break-normal break-words "}
+          >
             <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
               <Image
                 src={project.images}

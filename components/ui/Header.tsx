@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Button } from "./button";
 import Image from "next/image";
 import { ModeToggle } from "./mode-toggle";
-import { Sheet, SheetContent, SheetTrigger } from "./sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./sheet";
 import { Menu } from "lucide-react";
 
 export default function Header() {
@@ -23,7 +23,7 @@ export default function Header() {
       <div className="hidden md:block bg-gray-200 dark:bg-gray-800 h-0.5 w-full"></div>
       <div
         className={
-          "fixed top-0 left-0 right-0 w-2/3 mx-auto md:w-4/5 z-20 bg-white dark:bg-gray-950 transition-colors duration-300 md:text-sm"
+          "fixed top-0 left-0 right-0 w-2/3 mx-auto md:w-4/5 max-sm:w-full z-20 bg-white dark:bg-gray-950 transition-colors duration-300 md:text-sm"
         }
       >
         <div className={"flex md:flex-row justify-between items-center py-5"}>
@@ -79,7 +79,7 @@ export default function Header() {
             <ModeToggle />
             {/* <Link href={"/auth/login"}>Sign</Link> */}
           </nav>
-          <section className="flex grow-0 md:hidden">
+          <section className="flex grow-0 md:hidden dark:visited:text-gray-400">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
@@ -87,17 +87,19 @@ export default function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[80%] sm:w-[350px]">
+              <SheetContent side="right" className="w-[40%] sm:w-[350px]">
                 <div className="flex flex-col gap-4 py-4 px-4">
                   {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="text-lg font-medium transition-colors hover:text-primary"
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
+                    <SheetTitle key={item.href}>
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="text-lg font-medium transition-colors hover:text-primary"
+                        onClick={() => setOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </SheetTitle>
                   ))}
                 </div>
               </SheetContent>

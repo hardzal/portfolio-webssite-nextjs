@@ -32,9 +32,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="mx-auto w-2/3 md:w-4/5">
+          <div className="mx-auto w-2/3 md:w-4/5 max-sm:w-9/10">
             <Header />
-            <div className={"h-30"}></div>
+            <div className={"h-25"}></div>
             {children}
           </div>
           <Footer />

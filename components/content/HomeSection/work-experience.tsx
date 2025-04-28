@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Works } from "../utils/dummy-data/works";
+import { Works } from "../../utils/dummy-data/works";
 
 export default function WorkExperience() {
   return (
@@ -24,7 +24,11 @@ export default function WorkExperience() {
           </div>
 
           <div className={"flex flex-col grow my-5"}>
-            <div className={"flex flex-row justify-between "}>
+            <div
+              className={
+                "flex flex-row justify-between items-center align-middle max-md:justify-between max-md:gap-20"
+              }
+            >
               <div className={""}>
                 <h3 className={"text-xl font-semibold"}>{work.position}</h3>
                 <span className={"text-green-600"}>{work.company}</span>
