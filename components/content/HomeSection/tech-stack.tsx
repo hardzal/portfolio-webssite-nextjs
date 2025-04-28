@@ -8,7 +8,7 @@ import "@/styles/marquee.css";
 export default function TechStack() {
   return (
     <>
-      <h2 className={"text-3xl mt-5 mb-10 font-semibold"}>
+      <h2 className={"text-3xl mt-5 mb-15 font-semibold"}>
         Tech Stack - Tools I use everyday
       </h2>
       <Marquee

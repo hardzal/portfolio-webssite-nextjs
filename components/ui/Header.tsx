@@ -23,20 +23,24 @@ export default function Header() {
       <div className="hidden md:block bg-gray-200 dark:bg-gray-800 h-0.5 w-full"></div>
       <div
         className={
-          "fixed top-0 left-0 right-0 w-2/3 mx-auto md:w-4/5 max-sm:w-full z-20 bg-white dark:bg-gray-950 transition-colors duration-300 md:text-sm"
+          "fixed top-0 left-0 right-0 w-2/3 mx-auto md:w-4/5 max-sm:w-full z-20 bg-white dark:bg-gray-950 transition-colors duration-300 md:text-sm visited:text-gray-500"
         }
       >
-        <div className={"flex md:flex-row justify-between items-center py-5"}>
+        <div
+          className={
+            "flex md:flex-row justify-between max-md:items-center py-5"
+          }
+        >
           <div
             className={
-              "grow flex flex-row items-center align-middle justify-center"
+              "flex flex-row md:items-center align-middle justify-center basis-1/10"
             }
           >
-            <h1 className={"text-center font-bold"}>MRi Zal</h1>
+            <h1 className={"text-center font-bold align-middle"}>MRi Zal</h1>
           </div>
           <nav
             className={
-              "grow md:flex flex-row justify-between items-center align-middle gap-5 hidden"
+              "md:flex flex-row justify-between items-center align-middle gap-5 hidden"
             }
           >
             <Link href={"#tech_stack"}>Tech Stack</Link>
@@ -79,7 +83,7 @@ export default function Header() {
             <ModeToggle />
             {/* <Link href={"/auth/login"}>Sign</Link> */}
           </nav>
-          <section className="flex grow-0 md:hidden dark:visited:text-gray-400">
+          <section className="flex grow-0 md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">

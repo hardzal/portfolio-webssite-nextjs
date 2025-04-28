@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "../styles/global.css";
-import Header from "@/components/ui/Header";
-import Footer from "@/components/ui/Footer";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/utils/theme-provider";
 
@@ -32,12 +30,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="mx-auto w-2/3 md:w-4/5 max-sm:w-9/10">
-            <Header />
-            <div className={"h-25"}></div>
-            {children}
-          </div>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>

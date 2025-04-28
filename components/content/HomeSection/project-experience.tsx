@@ -19,7 +19,9 @@ export default function ProjectExperience() {
         {Projects.map((project, index) => (
           <Card
             key={project.id + index}
-            className={"overflow-hidden text-wrap sm:break-normal break-words "}
+            className={
+              "overflow-hidden text-wrap sm:break-normal break-words dark:bg-gray-900"
+            }
           >
             <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
               <Image

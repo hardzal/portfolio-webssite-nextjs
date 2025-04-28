@@ -121,6 +121,17 @@
   }
 }
 
+/* Untuk dark mode */
+@media (prefers-color-scheme: dark) {
+  a:link {
+    color: white; /* Biru lebih terang di dark mode */
+  }
+
+  a:visited {
+    color: gray; /* Warna visited di dark mode */
+  }
+}
+
 a:link {
   color: #1a73e8; /* Unvisited link color */
   text-decoration: none;

@@ -1,5 +1,13 @@
 import React from "react";
 
-export default function DashboardLayout() {
-  return <div>layout</div>;
+export default function DashboardLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  );
 }
