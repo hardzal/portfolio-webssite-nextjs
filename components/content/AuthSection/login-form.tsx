@@ -9,14 +9,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { loginSchema } from "@/components/utils/schemas/auth.schema";
+import {
+  loginSchema,
+  LoginSchemaDTO,
+} from "@/components/utils/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 export default function LoginForm() {
-  const form = useForm<z.infer<typeof loginSchema>>({
+  const form = useForm<LoginSchemaDTO>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       username: "",
@@ -24,7 +26,7 @@ export default function LoginForm() {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof loginSchema>) {
+  async function onSubmit(data: LoginSchemaDTO) {
     console.log("data submitted", data);
   }
 

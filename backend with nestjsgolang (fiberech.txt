@@ -1,0 +1,25 @@
+backend with nestjs/golang (fiber/echo/gin)
+- works experience
+  - job_title
+  - job_company
+  - job_description [json/array]
+  - job_tech_stack
+  - job_period
+  - job_logo
+
+- projects
+   - thumbnail
+   - title
+   - description
+   - tech
+   - links []
+  
+- about
+  - title
+  - job_title
+  - description
+  - location
+  - status
+  - links [WA, CV]
+
+- blogs
