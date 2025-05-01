@@ -2,6 +2,7 @@
 import { Project } from "@/types/project";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,11 +17,31 @@ import {
 export const columns: ColumnDef<Project>[] = [
   {
     accessorKey: "id",
-    header: "id",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Id
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "title",
-    header: "Title",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Title
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "description",
@@ -51,8 +72,15 @@ export const columns: ColumnDef<Project>[] = [
               Copy link github
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>edit project</DropdownMenuItem>
-            <DropdownMenuItem>view project details</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              view project details
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              edit project
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              delete project
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
