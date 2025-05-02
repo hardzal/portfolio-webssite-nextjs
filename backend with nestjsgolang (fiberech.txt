@@ -8,11 +8,12 @@ backend with nestjs/golang (fiber/echo/gin)
   - job_logo
 
 - projects
-   - thumbnail
+   - images
    - title
    - description
    - tech
-   - links []
+   - demo
+   - github
   
 - about
   - title
@@ -22,4 +23,11 @@ backend with nestjs/golang (fiber/echo/gin)
   - status
   - links [WA, CV]
 
+- tech_stacks
+   id
+   name
+   image
+   description
+
 - blogs
+140702

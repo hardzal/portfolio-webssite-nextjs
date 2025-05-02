@@ -17,7 +17,7 @@ import { Cat, Dog, Fish, Rabbit, Turtle } from "lucide-react";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { MultiSelect } from "./multi-select";
+import { MultiSelect } from "@/components/ui/multi-select";
 
 export default function ProjectForm() {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
