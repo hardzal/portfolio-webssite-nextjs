@@ -30,14 +30,14 @@ const items = [
     icon: Calendar,
   },
   {
+    title: "Tech Stack",
+    url: "/dashboard/technologies",
+    icon: Cpu,
+  },
+  {
     title: "About",
     url: "/dashboard/about",
     icon: Info,
-  },
-  {
-    title: "Tech Stack",
-    url: "/tech-stack",
-    icon: Cpu,
   },
   {
     title: "Settings",

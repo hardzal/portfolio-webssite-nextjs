@@ -1,5 +1,6 @@
 export const Works = [
   {
+    id: 1,
     image: "/skills/javascript.png",
     position: "Fullstack Developer",
     company: "Javascript.info",
@@ -13,6 +14,7 @@ export const Works = [
     technologies: ["Reactjs", "Nodejs", "Expressjs", "Postgresql", "Tailwind"],
   },
   {
+    id: 2,
     image: "/skills/typescript.png",
     position: "Frontend Developer",
     company: "React Academy",
@@ -26,6 +28,7 @@ export const Works = [
     technologies: ["Reactjs", "Redux", "Tailwind", "Vite", "Typescript"],
   },
   {
+    id: 3,
     image: "/skills/golang.png",
     position: "Backend Developer",
     company: "Node Masters",
@@ -39,6 +42,7 @@ export const Works = [
     technologies: ["Nodejs", "Expressjs", "Postgresql", "Docker", "AWS"],
   },
   {
+    id: 4,
     image: "/skills/python.png",
     position: "Fullstack Engineer",
     company: "Tech Solutions",
@@ -52,6 +56,7 @@ export const Works = [
     technologies: ["Next.js", "NestJS", "Prisma", "Postgresql", "Tailwind"],
   },
   {
+    id: 5,
     image: "/skills/typescript.png",
     position: "Software Engineer",
     company: "TypeScript Hub",
