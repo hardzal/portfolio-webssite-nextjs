@@ -4,6 +4,7 @@ export type Work = {
   company: string;
   description: string[];
   technologies?: string[];
+  status: boolean;
   period: string;
   image: string;
 };

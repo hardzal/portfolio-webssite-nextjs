@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/dialog";
 import ButtonCreate from "@/components/content/DashboardSection/button-create";
 import { Button } from "@/components/ui/button";
-import ProjectForm from "@/components/content/DashboardSection/project-form";
+import WorkForm from "@/components/content/DashboardSection/work-form";
 
-export default function AddExperience() {
+export default function AddWork() {
   return (
     <div className="w-full h-full relative">
       <Dialog>
@@ -24,7 +24,7 @@ export default function AddExperience() {
             <DialogTitle>Create A New Experience</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
-          <ProjectForm />
+          <WorkForm />
           <DialogFooter>
             <Button type="submit">Save changes</Button>
           </DialogFooter>

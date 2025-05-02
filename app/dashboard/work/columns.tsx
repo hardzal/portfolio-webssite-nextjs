@@ -31,7 +31,7 @@ export const columns: ColumnDef<Work>[] = [
     },
   },
   {
-    accessorKey: "position",
+    accessorKey: "title",
     header: ({ column }) => {
       return (
         <Button

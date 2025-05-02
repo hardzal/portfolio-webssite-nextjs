@@ -2,9 +2,10 @@ export const Works = [
   {
     id: 1,
     image: "/skills/javascript.png",
-    position: "Fullstack Developer",
+    title: "Fullstack Developer",
     company: "Javascript.info",
     period: "Oct 2022 - Mar 2023",
+    status: true,
     description: [
       "Develop and maintain JavaScript code",
       "Collaborate with frontend and backend teams",
@@ -16,9 +17,10 @@ export const Works = [
   {
     id: 2,
     image: "/skills/typescript.png",
-    position: "Frontend Developer",
+    title: "Frontend Developer",
     company: "React Academy",
     period: "Jan 2023 - Jun 2023",
+    status: true,
     description: [
       "Build dynamic UI components with React",
       "Handle API integration using Axios",
@@ -30,9 +32,10 @@ export const Works = [
   {
     id: 3,
     image: "/skills/golang.png",
-    position: "Backend Developer",
+    title: "Backend Developer",
     company: "Node Masters",
     period: "Jul 2023 - Dec 2023",
+    status: true,
     description: [
       "Design RESTful APIs with Express",
       "Integrate PostgreSQL database",
@@ -44,9 +47,10 @@ export const Works = [
   {
     id: 4,
     image: "/skills/python.png",
-    position: "Fullstack Engineer",
+    title: "Fullstack Engineer",
     company: "Tech Solutions",
     period: "Jan 2024 - Present",
+    status: true,
     description: [
       "Lead fullstack development projects",
       "Architect scalable backend systems",
@@ -58,9 +62,10 @@ export const Works = [
   {
     id: 5,
     image: "/skills/typescript.png",
-    position: "Software Engineer",
+    title: "Software Engineer",
     company: "TypeScript Hub",
     period: "May 2023 - Present",
+    status: true,
     description: [
       "Develop and maintain TypeScript projects",
       "Refactor legacy JavaScript codebases",

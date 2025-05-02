@@ -71,6 +71,7 @@ export default function ProjectForm() {
 
       form.setValue("images", file);
     }
+    console.log("tidak ada gambar");
   }
 
   return (
@@ -121,7 +122,6 @@ export default function ProjectForm() {
                   <FormLabel className="text-right">Images</FormLabel>
                   <FormControl className="col-span-3">
                     <Input
-                      placeholder="type your project title"
                       type={"file"}
                       className={""}
                       onChange={handlePreview}
@@ -134,76 +134,78 @@ export default function ProjectForm() {
                 </FormItem>
               )}
             />
+            {previewURL ? (
+              <div
+                className={"grid grid-cols-2 justify-self-center item-center"}
+              >
+                <Image
+                  className="col-span-2 mb-4"
+                  objectFit={"contain"}
+                  width={300}
+                  height={300}
+                  src={previewURL ?? ""}
+                  alt={"preview-image"}
+                />
+              </div>
+            ) : null}
+
+            <FormField
+              control={form.control}
+              name="technologies"
+              render={(
+                { field } // eslint-disable-line @typescript-eslint/no-unused-vars
+              ) => (
+                <FormItem className="grid grid-cols-4 items-center gap-4">
+                  <FormLabel className="text-right">Tech stack</FormLabel>
+                  <FormControl className="col-span-3">
+                    <MultiSelect
+                      options={frameworksList}
+                      onValueChange={setSelectedFrameworks}
+                      defaultValue={selectedFrameworks}
+                      placeholder="Select frameworks"
+                      variant="inverted"
+                      animation={2}
+                      maxCount={3}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="demo"
+              render={({ field }) => (
+                <FormItem className="grid grid-cols-4 items-center gap-4 py-4">
+                  <FormLabel className="text-right">Demo Link</FormLabel>
+                  <FormControl className="col-span-3">
+                    <Input
+                      placeholder="type your link"
+                      {...field}
+                      className={""}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="github"
+              render={({ field }) => (
+                <FormItem className="grid grid-cols-4 items-center gap-4">
+                  <FormLabel className="text-right">Github Link</FormLabel>
+                  <FormControl className="col-span-3">
+                    <Input
+                      placeholder="type your link"
+                      {...field}
+                      className={""}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </div>
-          {previewURL ? (
-            <div className={"grid grid-cols-2 justify-self-center item-center"}>
-              <Image
-                className="col-span-2 mb-4"
-                objectFit={"contain"}
-                width={300}
-                height={300}
-                src={previewURL ?? ""}
-                alt={"preview-image"}
-              />
-            </div>
-          ) : null}
-
-          <FormField
-            control={form.control}
-            name="technologies"
-            render={(
-              { field } // eslint-disable-line @typescript-eslint/no-unused-vars
-            ) => (
-              <FormItem className="grid grid-cols-4 items-center gap-4">
-                <FormLabel className="text-right">Tech stack</FormLabel>
-                <FormControl className="col-span-3">
-                  <MultiSelect
-                    options={frameworksList}
-                    onValueChange={setSelectedFrameworks}
-                    defaultValue={selectedFrameworks}
-                    placeholder="Select frameworks"
-                    variant="inverted"
-                    animation={2}
-                    maxCount={3}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="demo"
-            render={({ field }) => (
-              <FormItem className="grid grid-cols-4 items-center gap-4 py-4">
-                <FormLabel className="text-right">Demo Link</FormLabel>
-                <FormControl className="col-span-3">
-                  <Input
-                    placeholder="type your link"
-                    {...field}
-                    className={""}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="github"
-            render={({ field }) => (
-              <FormItem className="grid grid-cols-4 items-center gap-4">
-                <FormLabel className="text-right">Github Link</FormLabel>
-                <FormControl className="col-span-3">
-                  <Input
-                    placeholder="type your link"
-                    {...field}
-                    className={""}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
         </form>
       </Form>
     </>

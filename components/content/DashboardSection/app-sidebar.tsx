@@ -26,7 +26,7 @@ const items = [
   },
   {
     title: "Work Experiences",
-    url: "/dashboard/experience",
+    url: "/dashboard/work",
     icon: Calendar,
   },
   {
