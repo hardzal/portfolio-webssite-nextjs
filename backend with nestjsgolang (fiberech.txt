@@ -1,5 +1,12 @@
 backend with nestjs/golang (fiber/echo/gin)
+- users
+  - id
+  - username 
+  - email
+  - password
+
 - works experience
+  - id
   - job_title
   - job_company
   - job_description [json/array]
@@ -8,6 +15,7 @@ backend with nestjs/golang (fiber/echo/gin)
   - job_logo
 
 - projects
+   - id
    - images
    - title
    - description
@@ -16,11 +24,14 @@ backend with nestjs/golang (fiber/echo/gin)
    - github
   
 - about
+  - id
   - title
   - job_title
+  - email
   - description
   - location
-  - status
+  - isAvailable
+  - handphone
   - links [WA, CV]
 
 - tech_stacks

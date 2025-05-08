@@ -8,9 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import ButtonCreate from "@/components/content/DashboardSection/button-create";
+import ButtonCreate from "@/components/content/dashboard/button-create";
 import { Button } from "@/components/ui/button";
-import ProjectForm from "@/components/content/DashboardSection/project-form";
+import ProjectForm from "@/components/content/dashboard/project-form";
 
 export default function AddProject() {
   return (

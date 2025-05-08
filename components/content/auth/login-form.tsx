@@ -9,26 +9,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  loginSchema,
-  LoginSchemaDTO,
-} from "@/components/utils/schemas/auth.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
-import { useForm } from "react-hook-form";
+import SpinnerButton from "./components/Spinner";
+import useLogin from "./hooks/useLogin";
 
 export default function LoginForm() {
-  const form = useForm<LoginSchemaDTO>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      username: "",
-      password: "",
-    },
-  });
-
-  async function onSubmit(data: LoginSchemaDTO) {
-    console.log("data submitted", data);
-  }
+  const { onSubmit, form, isPending } = useLogin();
 
   return (
     <div className={"pt-5"}>
@@ -36,15 +22,16 @@ export default function LoginForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
-            name="username"
+            name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="type your username"
+                    placeholder="type your Email"
                     {...field}
                     className={"border-2 border-gray-300"}
+                    type="email"
                   />
                 </FormControl>
                 <FormMessage />
@@ -56,9 +43,10 @@ export default function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input
+                    type="password"
                     placeholder="type your password"
                     className={"border-2 border-gray-300"}
                     {...field}
@@ -68,8 +56,12 @@ export default function LoginForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" className={"cursor-pointer"}>
-            Submit
+          <Button
+            type="submit"
+            className={"cursor-pointer"}
+            disabled={isPending}
+          >
+            {isPending ? <SpinnerButton /> : "Login"}
           </Button>
         </form>
       </Form>
