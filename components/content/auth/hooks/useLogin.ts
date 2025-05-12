@@ -36,11 +36,9 @@ export default function useLogin() {
         `auth/login`,
         data
       );
-      alert("dapet nih");
       Cookies.set("token", response.data.token, {
         expires: 1,
       });
-      console.log("test");
       return response.data;
     },
 
@@ -48,17 +46,15 @@ export default function useLogin() {
       const errorMessage = error.message;
       console.log("hello error kamu");
 
-      toast.error("", {
+      toast.error("Login failed", {
         description: errorMessage,
-        descriptionClassName: "dark:text-md",
       });
     },
 
     onSuccess: async () => {
       console.log("hello sukses kamu");
-      toast.success("", {
+      toast.success("Login success", {
         description: "success login",
-        descriptionClassName: "dark:text-md",
       });
 
       router.push("/dashboard");

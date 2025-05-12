@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../styles/global.css";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/utils/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,7 +14,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Portfolio Website",
   description: "Website Portfolio as a Fullstack Developer",
-  viewport: "width=device-width, initial-scale=1", // responsive
+  // viewport: "width=device-width, initial-scale=1", // responsive
 };
 
 export default function RootLayout({
@@ -31,6 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

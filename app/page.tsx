@@ -3,6 +3,7 @@ import HomeSection from "@/components/layouts/HomeSection";
 import Footer from "@/components/ui/Footer";
 import Header from "@/components/ui/Header";
 import React from "react";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
