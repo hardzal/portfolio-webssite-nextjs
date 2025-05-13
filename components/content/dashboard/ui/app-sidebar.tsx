@@ -11,7 +11,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import LogoutButton from "../auth/components/logout-button";
+import LogoutButton from "../../auth/components/logout-button";
 
 // Menu items.
 const items = [

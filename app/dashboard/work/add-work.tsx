@@ -8,9 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import ButtonCreate from "@/components/content/dashboard/button-create";
+import ButtonCreate from "@/components/content/dashboard/ui/button-create";
 import { Button } from "@/components/ui/button";
-import WorkForm from "@/components/content/dashboard/work-form";
+import WorkForm from "@/components/content/dashboard/components/works/work-form";
 
 export default function AddWork() {
   return (

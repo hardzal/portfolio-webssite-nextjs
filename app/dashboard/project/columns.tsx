@@ -65,9 +65,7 @@ export const columns: ColumnDef<Project>[] = [
               <strong>Actions</strong>
             </DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(project.github || "")
-              }
+              onClick={() => navigator.clipboard.writeText(project.repo || "")}
             >
               Copy link github
             </DropdownMenuItem>
