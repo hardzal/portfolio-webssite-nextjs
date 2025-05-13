@@ -31,7 +31,7 @@ export const columns: ColumnDef<Work>[] = [
     },
   },
   {
-    accessorKey: "title",
+    accessorKey: "role",
     header: ({ column }) => {
       return (
         <Button
@@ -39,6 +39,20 @@ export const columns: ColumnDef<Work>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Position
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  },
+  {
+    accessorKey: "company",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Company
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

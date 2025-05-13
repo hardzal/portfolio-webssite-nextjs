@@ -39,11 +39,18 @@ export function DataTable<TData, TValue>({
     []
   );
 
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 5, // 👈 ini menentukan jumlah item per halaman
+  });
+
   const table = useReactTable({
     data,
     columns,
+    pageCount: Math.ceil(data.length / pagination.pageSize),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
@@ -51,6 +58,7 @@ export function DataTable<TData, TValue>({
     state: {
       sorting,
       columnFilters,
+      pagination,
     },
   });
 
@@ -59,9 +67,9 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter Position..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+          value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
+            table.getColumn("role")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
