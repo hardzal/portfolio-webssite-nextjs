@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -24,7 +23,6 @@ export default function AddProject() {
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <TechnologyForm />
-          <DialogFooter></DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
