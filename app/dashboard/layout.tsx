@@ -1,6 +1,7 @@
 "use client";
 import { AppSidebar } from "@/components/content/dashboard/ui/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import useToken from "@/hooks/use-token";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 const queryClient = new QueryClient();
@@ -10,6 +11,8 @@ export default function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useToken();
+
   return (
     <QueryClientProvider client={queryClient}>
       <SidebarProvider>
