@@ -13,7 +13,7 @@ export default function useDeleteTechnology() {
       },
       onSuccess: () => {
         queryClient.invalidateQueries({
-          queryKey: ["technologyData"],
+          queryKey: ["dataTechnology"],
         });
         toast.success("", {
           description: "sucess delete technology",

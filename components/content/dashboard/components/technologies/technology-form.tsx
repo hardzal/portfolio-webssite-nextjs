@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
-  Form,
   FormControl,
   FormField,
   FormItem,
@@ -11,16 +11,30 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import SpinnerButton from "@/components/content/auth/components/Spinner";
-import useAddTechnology from "../../hooks/technologies/useAddTechology";
+import { FormProvider } from "react-hook-form";
 
-export default function TechnologyForm() {
+interface TechnologyProps {
+  form: any;
+  defaultValues?: { name: string };
+  isPendingStack: boolean;
+  onSubmitStack: any;
+  handlePreview: any;
+  previewURL: string | null;
+  // onSubmit: (data: Technology) => void;
+}
+
+export default function TechnologyForm({
+  form,
+  isPendingStack,
+  previewURL,
+  handlePreview,
+  onSubmitStack,
+}: TechnologyProps) {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
-  const { form, isPendingStack, onSubmitStack, handlePreview, previewURL } =
-    useAddTechnology();
 
   return (
     <>
-      <Form {...form}>
+      <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmitStack)}>
           <div className="grid gap-4 py-4">
             <FormField
@@ -28,7 +42,7 @@ export default function TechnologyForm() {
               name="name"
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-right">Project Title</FormLabel>
+                  <FormLabel className="text-right">Stack Name</FormLabel>
                   <FormControl className="col-span-3">
                     <Input
                       placeholder="type technology name"
@@ -86,7 +100,7 @@ export default function TechnologyForm() {
             </Button>
           </div>
         </form>
-      </Form>
+      </FormProvider>
     </>
   );
 }

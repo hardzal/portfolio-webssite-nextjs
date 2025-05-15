@@ -8,7 +8,6 @@ import AddProject from "./add-project";
 import { axiosInstance } from "@/configs/axios";
 import { useQuery } from "@tanstack/react-query";
 import SpinnerButton from "@/components/content/auth/components/Spinner";
-// import { Projects } from "@/components/utils/dummy-data/projects";
 
 export default function ProjectPage() {
   const { isLoading: isLoadingProjects, data: dataProject } = useQuery<
@@ -25,8 +24,6 @@ export default function ProjectPage() {
   if (isLoadingProjects) {
     return <SpinnerButton />;
   }
-
-  // const dataProject: Project[] = Projects;
 
   return (
     <div className={"flex flex-col p-5 w-full py-5"}>

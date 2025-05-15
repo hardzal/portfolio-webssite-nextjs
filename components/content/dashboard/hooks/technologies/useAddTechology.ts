@@ -3,12 +3,12 @@ import {
   technologySchemaDTO,
 } from "@/components/utils/schemas/technology.schema";
 import { axiosInstance } from "@/configs/axios";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { TechnologyResponse } from "../../types/technology/technology-response";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function useAddTechnology() {
   const queryClient = useQueryClient();
@@ -22,11 +22,11 @@ export default function useAddTechnology() {
     },
   });
 
-  const { isPending: isPendingStack, mutateAsync: mutateStack } = useMutation<
-    TechnologyResponse,
-    Error,
-    technologySchemaDTO
-  >({
+  const {
+    isPending: isPendingStack,
+    mutateAsync: mutateStack,
+    isSuccess,
+  } = useMutation<TechnologyResponse, Error, technologySchemaDTO>({
     mutationKey: ["addStack"],
     mutationFn: async (data: technologySchemaDTO) => {
       const formData = new FormData();
@@ -75,6 +75,7 @@ export default function useAddTechnology() {
 
   return {
     form,
+    isSuccess,
     isPendingStack,
     onSubmitStack,
     handlePreview,

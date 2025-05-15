@@ -1,53 +1,53 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+import SpinnerButton from "@/components/content/auth/components/Spinner";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { MoreHorizontal } from "lucide-react";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Technology } from "@/types/technology";
+import React from "react";
+interface TechnologyProps {
+  showDeleteDialog: any;
+  setShowDeleteDialog: any;
+  deleteTechnology: any;
+  data: Technology | null;
+  isPendingTechnology: boolean;
+}
 
 export default function DeleteTechnology({
-  row,
-  onDeleteTechnology,
-}: {
-  row: any;
-  onDeleteTechnology: (item: any) => void;
-}) {
-  const stack = row.original;
+  showDeleteDialog,
+  setShowDeleteDialog,
+  deleteTechnology,
+  data,
+  isPendingTechnology,
+}: TechnologyProps) {
+  async function onTechnologyDelete(data: Technology | null) {
+    await deleteTechnology(data);
+  }
 
   return (
-    <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
-            <MoreHorizontal className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>
-            <strong>Actions</strong>
-          </DropdownMenuLabel>
-          <DropdownMenuItem className="cursor-pointer">
-            view stack details
-          </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer">
-            edit stack
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            className="cursor-pointer text-red-600"
-            onClick={() => onDeleteTechnology(stack.id)}
-          >
-            delete stack
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </>
+    <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={() => onTechnologyDelete(data)}>
+            {isPendingTechnology ? <SpinnerButton /> : "Confirm"}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
