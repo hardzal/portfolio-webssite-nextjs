@@ -6,39 +6,31 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { ProjectResponse } from "../../types/project/project-response";
 import { axiosInstance } from "@/configs/axios";
-import { toast } from "sonner";
 
-export default function useAddProject() {
+export default function useEditProject({ id }: { id: number }) {
   const queryClient = useQueryClient();
   const [previewURL, setPreviewURL] = useState<string | null>(null);
 
   const form = useForm<projectSchemaDTO>({
     mode: "onChange",
     resolver: zodResolver(projectSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      technologies: [],
-      demo: "",
-      github: "",
-    },
+    defaultValues: {},
   });
 
-  const {
-    isPending: isPendingProject,
-    mutateAsync: mutateStack,
-    isSuccess,
-  } = useMutation<ProjectResponse, Error, projectSchemaDTO>({
-    mutationKey: ["addStack"],
+  const { isPending: isPendingProject, mutateAsync: mutateStack } = useMutation<
+    ProjectResponse,
+    Error,
+    projectSchemaDTO
+  >({
+    mutationKey: ["editStack", id],
     mutationFn: async (data: projectSchemaDTO) => {
       const formData = new FormData();
       formData.append("title", data.title);
-      formData.append("description", data.description);
-      //   formData.append("technologies", );
-      //   formData.append("demo", data.demo);
-      const response = await axiosInstance.post("/stacks", formData);
+
+      const response = await axiosInstance.put(`/stacks/${id}`, formData);
 
       return response.data;
     },
@@ -49,17 +41,16 @@ export default function useAddProject() {
       });
 
       toast.success("", {
-        description: "success add project",
+        description: "success edit technology",
       });
     },
 
     onError: () => {
       toast.error("", {
-        description: "failed add technology",
+        description: "failed edit technology",
       });
     },
   });
-
   async function onSubmitProject(data: projectSchemaDTO) {
     console.log("Data get", data);
     await mutateStack(data);
@@ -81,7 +72,6 @@ export default function useAddProject() {
 
   return {
     form,
-    isSuccess,
     isPendingProject,
     onSubmitProject,
     handlePreview,

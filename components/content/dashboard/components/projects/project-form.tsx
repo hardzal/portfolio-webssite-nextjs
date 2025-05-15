@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
   Form,
@@ -8,42 +9,30 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  projectSchema,
-  projectSchemaDTO,
-} from "@/components/utils/schemas/project.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Cat, Dog, Fish, Rabbit, Turtle } from "lucide-react";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
 import { MultiSelect } from "@/components/ui/multi-select";
+import SpinnerButton from "@/components/content/auth/components/Spinner";
+import { Button } from "@/components/ui/button";
 
-export default function ProjectForm() {
+interface ProjectProps {
+  form: any;
+  isPendingProject: boolean;
+  onSubmitProject: any;
+  handlePreview: any;
+  previewURL: string | null;
+}
+
+export default function ProjectForm({
+  form,
+  isPendingProject,
+  handlePreview,
+  onSubmitProject,
+  previewURL,
+}: ProjectProps) {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
-  const [previewURL, setPreviewURL] = useState<string | null>(null);
-
-  const form = useForm<projectSchemaDTO>({
-    mode: "onChange",
-    resolver: zodResolver(projectSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      technologies: [],
-      demo: "",
-      github: "",
-    },
-  });
-
-  // const {
-  //   ref: registerImageRef,
-  //   onChange: registerImagesOnChange,
-  //   ...restRegisterImages
-  // } = form.register("images");
-
-  // function onClickFile() {
-  //   inputFileRef?.current?.click();
-  // }
 
   const frameworksList = [
     { value: "react", label: "React", icon: Turtle },
@@ -58,26 +47,10 @@ export default function ProjectForm() {
     "angular",
   ]);
 
-  async function onSubmit(data: projectSchemaDTO) {
-    console.log("data submitted", data);
-  }
-
-  function handlePreview(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-
-      setPreviewURL(url);
-
-      form.setValue("images", file);
-    }
-    console.log("tidak ada gambar");
-  }
-
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmitProject)}>
           <div className="grid gap-4 py-4">
             <FormField
               control={form.control}
@@ -205,6 +178,16 @@ export default function ProjectForm() {
                 </FormItem>
               )}
             />
+          </div>
+          <div className="flex justify-end">
+            <Button
+              type="submit"
+              disabled={isPendingProject}
+              variant={"default"}
+              className="cursor-pointer flex w-1/3"
+            >
+              {isPendingProject ? <SpinnerButton /> : "submit"}
+            </Button>
           </div>
         </form>
       </Form>

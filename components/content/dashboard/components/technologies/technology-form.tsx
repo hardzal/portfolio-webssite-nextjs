@@ -15,12 +15,10 @@ import { FormProvider } from "react-hook-form";
 
 interface TechnologyProps {
   form: any;
-  defaultValues?: { name: string };
   isPendingStack: boolean;
   onSubmitStack: any;
   handlePreview: any;
   previewURL: string | null;
-  // onSubmit: (data: Technology) => void;
 }
 
 export default function TechnologyForm({

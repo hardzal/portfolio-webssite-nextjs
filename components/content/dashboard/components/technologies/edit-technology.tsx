@@ -54,7 +54,7 @@ export default function EditTechnology({
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
         <DialogContent className={"w-1/2"}>
           <DialogHeader>
-            <DialogTitle>Add A New Technology</DialogTitle>
+            <DialogTitle>Edit Technology</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <TechnologyForm
