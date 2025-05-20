@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { MultiSelect } from "@/components/ui/multi-select";
 import SpinnerButton from "@/components/content/auth/components/Spinner";
 import { Button } from "@/components/ui/button";
@@ -43,7 +43,7 @@ export default function ProjectForm({
     queryKey: ["technologyData"],
     queryFn: async () => {
       const response = await axiosInstance.get("/stacks");
-      console.log("anu", response.data.data);
+
       return response.data.data;
     },
   });
@@ -51,7 +51,6 @@ export default function ProjectForm({
   const technologyList: { value: string; label: string }[] = [];
 
   if (!isLoadingTechnologies) {
-    console.log("data", dataTechnology);
     dataTechnology?.map((item: Technology) => {
       technologyList.push({
         value: item.id.toString(),
@@ -59,8 +58,6 @@ export default function ProjectForm({
       });
     });
   }
-
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([]);
 
   return (
     <>
@@ -104,7 +101,7 @@ export default function ProjectForm({
 
             <FormField
               control={form.control}
-              name="images"
+              name="image"
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
                   <FormLabel className="text-right">Images</FormLabel>
@@ -139,21 +136,21 @@ export default function ProjectForm({
 
             <FormField
               control={form.control}
-              name="technologies"
-              render={(
-                { field } // eslint-disable-line @typescript-eslint/no-unused-vars
-              ) => (
+              name="stacks"
+              render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
                   <FormLabel className="text-right">Tech stack</FormLabel>
                   <FormControl className="col-span-3">
                     <MultiSelect
                       options={technologyList}
-                      onValueChange={setSelectedFrameworks}
-                      defaultValue={selectedFrameworks}
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
                       placeholder="Select technology"
                       variant="inverted"
                       animation={2}
                       maxCount={3}
+                      modalPopover={true}
+                      name="stacks"
                     />
                   </FormControl>
                 </FormItem>

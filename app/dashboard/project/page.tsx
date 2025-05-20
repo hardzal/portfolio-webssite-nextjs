@@ -37,7 +37,7 @@ export default function ProjectPage() {
     queryKey: ["dataProject"],
     queryFn: async () => {
       const response = await axiosInstance.get("/projects");
-      console.log(response.data.data);
+
       return response.data.data;
     },
   });

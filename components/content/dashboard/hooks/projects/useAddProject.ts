@@ -20,7 +20,7 @@ export default function useAddProject() {
     defaultValues: {
       title: "",
       description: "",
-      technologies: [],
+      stacks: [],
       demo: "",
       github: "",
     },
@@ -36,16 +36,27 @@ export default function useAddProject() {
       const formData = new FormData();
       formData.append("title", data.title);
       formData.append("description", data.description);
-      //   formData.append("technologies", );
-      //   formData.append("demo", data.demo);
-      const response = await axiosInstance.post("/stacks", formData);
+
+      if (data.image != undefined) {
+        formData.append("image", data.image);
+      }
+
+      data.stacks.forEach((item) => {
+        formData.append(`stacks`, item);
+      });
+
+      if (data.demo !== undefined) formData.append("repo", data.demo);
+      if (data.github !== undefined) formData.append("demo", data.github);
+
+      console.log("hasil", formData);
+      const response = await axiosInstance.post("/projects", formData);
 
       return response.data;
     },
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["dataTechnology"],
+        queryKey: ["dataProject"],
       });
 
       toast.success("", {
@@ -74,9 +85,8 @@ export default function useAddProject() {
 
       setPreviewURL(url);
 
-      form.setValue("images", file);
+      form.setValue("image", file);
     }
-    console.log("tidak ada gambar");
   }
 
   return {
