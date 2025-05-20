@@ -32,7 +32,8 @@ export default function TechnologiesPage() {
   const { deleteTechnology, isPendingTechnology } = useDeleteTechnology();
 
   const { isLoading: isLoadingTechnologies, data: dataTechnology } = useQuery<
-    Technology[]
+    Technology[],
+    Error
   >({
     queryKey: ["dataTechnology"],
     queryFn: async () => {

@@ -10,12 +10,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-import { Cat, Dog, Fish, Rabbit, Turtle } from "lucide-react";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { MultiSelect } from "@/components/ui/multi-select";
 import SpinnerButton from "@/components/content/auth/components/Spinner";
 import { Button } from "@/components/ui/button";
+import { Technology } from "@/types/technology";
+import { useQuery } from "@tanstack/react-query";
+import { axiosInstance } from "@/configs/axios";
 
 interface ProjectProps {
   form: any;
@@ -34,18 +36,31 @@ export default function ProjectForm({
 }: ProjectProps) {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
 
-  const frameworksList = [
-    { value: "react", label: "React", icon: Turtle },
-    { value: "angular", label: "Angular", icon: Cat },
-    { value: "vue", label: "Vue", icon: Dog },
-    { value: "svelte", label: "Svelte", icon: Rabbit },
-    { value: "ember", label: "Ember", icon: Fish },
-  ];
+  const { isLoading: isLoadingTechnologies, data: dataTechnology } = useQuery<
+    Technology[],
+    Error
+  >({
+    queryKey: ["technologyData"],
+    queryFn: async () => {
+      const response = await axiosInstance.get("/stacks");
+      console.log("anu", response.data.data);
+      return response.data.data;
+    },
+  });
 
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([
-    "react",
-    "angular",
-  ]);
+  const technologyList: { value: string; label: string }[] = [];
+
+  if (!isLoadingTechnologies) {
+    console.log("data", dataTechnology);
+    dataTechnology?.map((item: Technology) => {
+      technologyList.push({
+        value: item.id.toString(),
+        label: item.name,
+      });
+    });
+  }
+
+  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([]);
 
   return (
     <>
@@ -132,10 +147,10 @@ export default function ProjectForm({
                   <FormLabel className="text-right">Tech stack</FormLabel>
                   <FormControl className="col-span-3">
                     <MultiSelect
-                      options={frameworksList}
+                      options={technologyList}
                       onValueChange={setSelectedFrameworks}
                       defaultValue={selectedFrameworks}
-                      placeholder="Select frameworks"
+                      placeholder="Select technology"
                       variant="inverted"
                       animation={2}
                       maxCount={3}

@@ -30,6 +30,7 @@ export default function ProjectPage() {
   const [selectedItem, setSelectedItem] = useState<Project | null>(null);
 
   const { deleteProject, isPendingProject } = useDeleteProject();
+
   const { isLoading: isLoadingProjects, data: dataProject } = useQuery<
     Project[]
   >({

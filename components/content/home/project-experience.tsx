@@ -25,7 +25,7 @@ export default function ProjectExperience() {
           >
             <CardContent className="flex flex-col items-center justify-center border-gray-200 border-b-2">
               <Image
-                src={project.images}
+                src={project.image_url}
                 alt={"Thumbnail project"}
                 width={300}
                 height={300}

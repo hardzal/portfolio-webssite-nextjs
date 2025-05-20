@@ -33,7 +33,7 @@ export default function WorkExperience() {
                 }
               >
                 <div className={""}>
-                  <h3 className={"text-xl font-semibold"}>{work.position}</h3>
+                  <h3 className={"text-xl font-semibold"}>{work.title}</h3>
                   <span className={"text-green-600"}>{work.company}</span>
                 </div>
                 <div className={""}>
