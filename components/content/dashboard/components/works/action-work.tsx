@@ -19,9 +19,9 @@ export default function ActionWork({
 }: {
   row: any;
   onEditWork: (item: Work) => void;
-  onDeleteWork: (item: any) => void;
+  onDeleteWork: (item: Work) => void;
 }) {
-  const stack: Work = row.original;
+  const work: Work = row.original;
 
   return (
     <>
@@ -41,14 +41,14 @@ export default function ActionWork({
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() => onEditWork(stack)}
+            onClick={() => onEditWork(work)}
           >
-            edit stack
+            edit work
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className="cursor-pointer text-red-600"
-            onClick={() => onDeleteWork(stack.id)}
+            onClick={() => onDeleteWork(work)}
           >
             delete work
           </DropdownMenuItem>

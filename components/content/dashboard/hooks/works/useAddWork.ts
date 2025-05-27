@@ -10,7 +10,7 @@ import {
 } from "@/components/utils/schemas/work.schema";
 import { WorkResponse } from "../../types/work/work-response";
 
-export default function useAddProject() {
+export default function useAddWork() {
   const queryClient = useQueryClient();
   const [previewURL, setPreviewURL] = useState<string | null>(null);
 
@@ -28,7 +28,7 @@ export default function useAddProject() {
   });
 
   const {
-    isPending: isPendingProject,
+    isPending: isPendingWork,
     mutateAsync: mutateStack,
     isSuccess,
   } = useMutation<WorkResponse, Error, workSchemaDTO>({
@@ -55,7 +55,7 @@ export default function useAddProject() {
         formData.append(`stacks`, item);
       });
 
-      const response = await axiosInstance.post("/projects", formData);
+      const response = await axiosInstance.post("/works", formData);
 
       return response.data;
     },
@@ -77,7 +77,7 @@ export default function useAddProject() {
     },
   });
 
-  async function onSubmitProject(data: workSchemaDTO) {
+  async function onSubmitWork(data: workSchemaDTO) {
     console.log("Data get", data);
     await mutateStack(data);
     form.reset();
@@ -98,8 +98,8 @@ export default function useAddProject() {
   return {
     form,
     isSuccess,
-    isPendingProject,
-    onSubmitProject,
+    isPendingWork,
+    onSubmitWork,
     handlePreview,
     previewURL,
     setPreviewURL,

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Switch } from "@/components/ui/switch";
 import { format } from "date-fns";
 import {
@@ -11,15 +12,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { MultiSelect } from "@/components/ui/multi-select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  workSchema,
-  workSchemaDTO,
-} from "@/components/utils/schemas/work.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "lucide-react";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useRef } from "react";
 import {
   Popover,
   PopoverContent,
@@ -31,23 +26,24 @@ import { Calendar } from "@/components/ui/calendar";
 import { Technology } from "@/types/technology";
 import { axiosInstance } from "@/configs/axios";
 import { useQuery } from "@tanstack/react-query";
+import SpinnerButton from "@/components/content/auth/components/Spinner";
 
-export default function WorkForm() {
+interface WorkProps {
+  form: any;
+  isPendingWork: boolean;
+  onSubmitWork: any;
+  handlePreview: any;
+  previewURL: string | null;
+}
+
+export default function WorkForm({
+  form,
+  isPendingWork,
+  previewURL,
+  handlePreview,
+  onSubmitWork,
+}: WorkProps) {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
-  const [previewURL, setPreviewURL] = useState<string | null>(null);
-
-  const form = useForm<workSchemaDTO>({
-    mode: "onChange",
-    resolver: zodResolver(workSchema),
-    defaultValues: {
-      title: "",
-      company: "",
-      description: [],
-      stacks: [],
-      startDate: "",
-      endDate: "",
-    },
-  });
 
   const { isLoading: isLoadingTechnologies, data: dataTechnology } = useQuery<
     Technology[],
@@ -72,26 +68,10 @@ export default function WorkForm() {
     });
   }
 
-  async function onSubmit(data: workSchemaDTO) {
-    console.log("data submitted: ", data);
-  }
-
-  function handlePreview(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-
-      setPreviewURL(url);
-
-      form.setValue("image", file);
-    }
-    console.log("tidak ada gambar");
-  }
-
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmitWork)}>
           <div className="grid gap-4 py-4">
             <FormField
               control={form.control}
@@ -311,6 +291,16 @@ export default function WorkForm() {
                 </FormItem>
               )}
             />
+          </div>
+          <div className="flex justify-end">
+            <Button
+              type="submit"
+              disabled={isPendingWork}
+              variant={"default"}
+              className="cursor-pointer flex w-1/3"
+            >
+              {isPendingWork ? <SpinnerButton /> : "submit"}
+            </Button>
           </div>
         </form>
       </Form>

@@ -6,21 +6,21 @@ export default function useDeleteWork() {
   const queryClient = useQueryClient();
 
   const { mutateAsync: deleteWork, isPending: isPendingWork } = useMutation({
-    mutationKey: ["deleteProject"],
+    mutationKey: ["deleteWork"],
     mutationFn: async (id: number) => {
       await axiosInstance.delete(`/works/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["dataProject"],
+        queryKey: ["dataWork"],
       });
       toast.success("", {
-        description: "sucess delete project",
+        description: "sucess delete work",
       });
     },
     onError: () => {
       toast.error("", {
-        description: "failed delete project",
+        description: "failed delete work",
       });
     },
   });
