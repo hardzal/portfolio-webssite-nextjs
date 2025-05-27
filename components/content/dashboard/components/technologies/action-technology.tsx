@@ -19,7 +19,7 @@ export default function ActionTechnology({
 }: {
   row: any;
   onEditTechnology: (item: Technology) => void;
-  onDeleteTechnology: (item: any) => void;
+  onDeleteTechnology: (item: Technology) => void;
 }) {
   const stack: Technology = row.original;
 
@@ -48,7 +48,7 @@ export default function ActionTechnology({
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className="cursor-pointer text-red-600"
-            onClick={() => onDeleteTechnology(stack.id)}
+            onClick={() => onDeleteTechnology(stack)}
           >
             delete project
           </DropdownMenuItem>

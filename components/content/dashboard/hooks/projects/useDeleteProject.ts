@@ -1,4 +1,5 @@
 import { axiosInstance } from "@/configs/axios";
+import { Project } from "@/types/project";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -8,8 +9,9 @@ export default function useDeleteProject() {
   const { mutateAsync: deleteProject, isPending: isPendingProject } =
     useMutation({
       mutationKey: ["deleteProject"],
-      mutationFn: async (id: number) => {
-        await axiosInstance.delete(`/stacks/${id}`);
+      mutationFn: async (data: Project) => {
+        console.log("data deleted", data);
+        await axiosInstance.delete(`/projects/${data.id}`);
       },
       onSuccess: () => {
         queryClient.invalidateQueries({
