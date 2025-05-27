@@ -34,6 +34,7 @@ export default function EditTechnology({
   };
 
   const {
+    isSuccess,
     form,
     isPendingStack,
     onSubmitStack,
@@ -48,6 +49,12 @@ export default function EditTechnology({
       setPreviewURL(data.image);
     }
   }, [data, form, setPreviewURL]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setShowDialog(false);
+    }
+  }, [isSuccess, setShowDialog]);
 
   return (
     <div className="w-full h-full relative">

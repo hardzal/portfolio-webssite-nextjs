@@ -6,7 +6,7 @@ export const projectSchema = z.object({
   stacks: z.string().array(),
   image: z.instanceof(File).optional(),
   demo: z.string().optional(),
-  github: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 export type projectSchemaDTO = z.infer<typeof projectSchema>;

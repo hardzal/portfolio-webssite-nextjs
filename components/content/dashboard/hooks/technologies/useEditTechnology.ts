@@ -28,11 +28,11 @@ export default function useEditTechnology({
     },
   });
 
-  const { isPending: isPendingStack, mutateAsync: mutateStack } = useMutation<
-    TechnologyResponse,
-    Error,
-    technologySchemaDTO
-  >({
+  const {
+    isPending: isPendingStack,
+    mutateAsync: mutateStack,
+    isSuccess,
+  } = useMutation<TechnologyResponse, Error, technologySchemaDTO>({
     mutationKey: ["editStack", id],
     mutationFn: async (data: technologySchemaDTO) => {
       const formData = new FormData();
@@ -83,6 +83,7 @@ export default function useEditTechnology({
   return {
     form,
     isPendingStack,
+    isSuccess,
     onSubmitStack,
     handlePreview,
     previewURL,

@@ -20,15 +20,27 @@ export default function useEditProject({ id }: { id: number }) {
     defaultValues: {},
   });
 
-  const { isPending: isPendingProject, mutateAsync: mutateStack } = useMutation<
-    ProjectResponse,
-    Error,
-    projectSchemaDTO
-  >({
+  const {
+    isPending: isPendingProject,
+    mutateAsync: mutateStack,
+    isSuccess,
+  } = useMutation<ProjectResponse, Error, projectSchemaDTO>({
     mutationKey: ["editProject", id],
     mutationFn: async (data: projectSchemaDTO) => {
       const formData = new FormData();
       formData.append("title", data.title);
+      formData.append("description", data.description);
+
+      if (data.image != undefined) {
+        formData.append("image", data.image);
+      }
+
+      data.stacks.forEach((item) => {
+        formData.append(`stacks`, item);
+      });
+
+      if (data.demo !== undefined) formData.append("repo", data.demo);
+      if (data.repo !== undefined) formData.append("demo", data.repo);
 
       const response = await axiosInstance.put(`/projects/${id}`, formData);
 
@@ -71,6 +83,7 @@ export default function useEditProject({ id }: { id: number }) {
 
   return {
     form,
+    isSuccess,
     isPendingProject,
     onSubmitProject,
     handlePreview,

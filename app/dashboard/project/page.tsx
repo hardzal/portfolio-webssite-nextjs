@@ -83,7 +83,6 @@ export default function ProjectPage() {
           row={row}
           onDeleteProject={(item) => {
             setSelectedItem(item);
-            console.log("data item", item);
             setOpenDialog(true);
           }}
           onEditProject={(item) => {

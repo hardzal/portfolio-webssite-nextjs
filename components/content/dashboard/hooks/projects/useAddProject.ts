@@ -22,7 +22,7 @@ export default function useAddProject() {
       description: "",
       stacks: [],
       demo: "",
-      github: "",
+      repo: "",
     },
   });
 
@@ -46,7 +46,7 @@ export default function useAddProject() {
       });
 
       if (data.demo !== undefined) formData.append("repo", data.demo);
-      if (data.github !== undefined) formData.append("demo", data.github);
+      if (data.repo !== undefined) formData.append("demo", data.repo);
 
       const response = await axiosInstance.post("/projects", formData);
 

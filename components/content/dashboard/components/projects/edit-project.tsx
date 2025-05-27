@@ -10,7 +10,7 @@ import {
 import React, { useEffect } from "react";
 import useEditProject from "../../hooks/projects/useEditProject";
 import ProjectForm from "./project-form";
-interface TechnologyProps {
+interface ProjectProps {
   showDialog: any;
   setShowDialog: any;
   data: Project | null;
@@ -20,12 +20,13 @@ export default function EditProject({
   showDialog,
   setShowDialog,
   data,
-}: TechnologyProps) {
+}: ProjectProps) {
   const editProps: { id: number } = {
     id: data?.id as number,
   };
   const {
     form,
+    isSuccess,
     isPendingProject,
     onSubmitProject,
     handlePreview,
@@ -35,10 +36,17 @@ export default function EditProject({
 
   useEffect(() => {
     if (data) {
-      //   form.reset({ name: data.name });
+      form.reset({ ...data });
       setPreviewURL(data.image_url);
     }
   }, [data, form, setPreviewURL]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setShowDialog(false);
+    }
+  }, [isSuccess, setShowDialog]);
+
   return (
     <div className="w-full h-full relative">
       <Dialog open={showDialog} onOpenChange={setShowDialog}>

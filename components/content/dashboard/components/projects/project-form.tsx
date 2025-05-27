@@ -144,7 +144,12 @@ export default function ProjectForm({
                     <MultiSelect
                       options={technologyList}
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      defaultValue={
+                        field.value ??
+                        technologyList.filter((opt) =>
+                          field.value?.includes(opt.value)
+                        )
+                      }
                       placeholder="Select technology"
                       variant="inverted"
                       animation={2}
@@ -176,7 +181,7 @@ export default function ProjectForm({
 
             <FormField
               control={form.control}
-              name="github"
+              name="repo"
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
                   <FormLabel className="text-right">Github Link</FormLabel>
