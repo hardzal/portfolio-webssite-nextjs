@@ -25,34 +25,33 @@ export default function useEditProject({ id }: { id: number }) {
     Error,
     projectSchemaDTO
   >({
-    mutationKey: ["editStack", id],
+    mutationKey: ["editProject", id],
     mutationFn: async (data: projectSchemaDTO) => {
       const formData = new FormData();
       formData.append("title", data.title);
 
-      const response = await axiosInstance.put(`/stacks/${id}`, formData);
+      const response = await axiosInstance.put(`/projects/${id}`, formData);
 
       return response.data;
     },
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["dataTechnology"],
+        queryKey: ["dataProject"],
       });
 
       toast.success("", {
-        description: "success edit technology",
+        description: "success edit project",
       });
     },
 
     onError: () => {
       toast.error("", {
-        description: "failed edit technology",
+        description: "failed edit project",
       });
     },
   });
   async function onSubmitProject(data: projectSchemaDTO) {
-    console.log("Data get", data);
     await mutateStack(data);
     form.reset();
     setPreviewURL("");
@@ -65,7 +64,7 @@ export default function useEditProject({ id }: { id: number }) {
 
       setPreviewURL(url);
 
-      form.setValue("images", file);
+      form.setValue("image", file);
     }
     console.log("tidak ada gambar");
   }

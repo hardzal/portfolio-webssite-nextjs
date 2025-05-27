@@ -7,21 +7,21 @@ export default function useDeleteProject() {
 
   const { mutateAsync: deleteProject, isPending: isPendingProject } =
     useMutation({
-      mutationKey: ["deleteStack"],
+      mutationKey: ["deleteProject"],
       mutationFn: async (id: number) => {
         await axiosInstance.delete(`/stacks/${id}`);
       },
       onSuccess: () => {
         queryClient.invalidateQueries({
-          queryKey: ["dataTechnology"],
+          queryKey: ["dataProject"],
         });
         toast.success("", {
-          description: "sucess delete technology",
+          description: "sucess delete project",
         });
       },
       onError: () => {
         toast.error("", {
-          description: "failed delete technology",
+          description: "failed delete project",
         });
       },
     });
