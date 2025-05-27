@@ -1,5 +1,6 @@
 "use client";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
+import { format } from "date-fns";
 import {
   Form,
   FormControl,
@@ -15,10 +16,21 @@ import {
   workSchemaDTO,
 } from "@/components/utils/schemas/work.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Cat, Dog, Fish, Rabbit, Turtle } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import { Technology } from "@/types/technology";
+import { axiosInstance } from "@/configs/axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function WorkForm() {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
@@ -31,23 +43,34 @@ export default function WorkForm() {
       title: "",
       company: "",
       description: [],
-      technologies: [],
-      period: "",
+      stacks: [],
+      startDate: "",
+      endDate: "",
     },
   });
 
-  const frameworksList = [
-    { value: "react", label: "React", icon: Turtle },
-    { value: "angular", label: "Angular", icon: Cat },
-    { value: "vue", label: "Vue", icon: Dog },
-    { value: "svelte", label: "Svelte", icon: Rabbit },
-    { value: "ember", label: "Ember", icon: Fish },
-  ];
+  const { isLoading: isLoadingTechnologies, data: dataTechnology } = useQuery<
+    Technology[],
+    Error
+  >({
+    queryKey: ["technologyData"],
+    queryFn: async () => {
+      const response = await axiosInstance.get("/stacks");
 
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([
-    "react",
-    "angular",
-  ]);
+      return response.data.data;
+    },
+  });
+
+  const technologyList: { value: string; label: string }[] = [];
+
+  if (!isLoadingTechnologies) {
+    dataTechnology?.map((item: Technology) => {
+      technologyList.push({
+        value: item.id.toString(),
+        label: item.name,
+      });
+    });
+  }
 
   async function onSubmit(data: workSchemaDTO) {
     console.log("data submitted: ", data);
@@ -108,16 +131,89 @@ export default function WorkForm() {
 
             <FormField
               control={form.control}
-              name="period"
+              name="startDate"
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-right">Period</FormLabel>
+                  <FormLabel className="text-right">Start date</FormLabel>
                   <FormControl className="col-span-3">
-                    <Input
-                      placeholder="type your job period"
-                      {...field}
-                      className={""}
-                    />
+                    <Popover modal={true}>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-[240px] pl-3 text-left font-normal",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={
+                            field.value ? new Date(field.value) : undefined
+                          }
+                          onSelect={field.onChange}
+                          disabled={(date) =>
+                            date > new Date() || date < new Date("1900-01-01")
+                          }
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="endDate"
+              render={({ field }) => (
+                <FormItem className="grid grid-cols-4 items-center gap-4">
+                  <FormLabel className="text-right">End date</FormLabel>
+                  <FormControl className="col-span-3">
+                    <Popover modal={true}>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-[240px] pl-3 text-left font-normal",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={
+                            field.value ? new Date(field.value) : undefined
+                          }
+                          onSelect={field.onChange}
+                          disabled={(date) =>
+                            date > new Date() || date < new Date("1900-01-01")
+                          }
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
                   </FormControl>
                 </FormItem>
               )}
@@ -128,9 +224,9 @@ export default function WorkForm() {
               name="status"
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-left">Still on the job?</FormLabel>
+                  <FormLabel className="text-left">Active</FormLabel>
                   <FormControl className="col-span-3">
-                    <Checkbox
+                    <Switch
                       id="status"
                       onCheckedChange={field.onChange}
                       checked={field.value}
@@ -177,27 +273,27 @@ export default function WorkForm() {
 
             <FormField
               control={form.control}
-              name="technologies"
-              render={(
-                { field } // eslint-disable-line @typescript-eslint/no-unused-vars
-              ) => (
+              name="stacks"
+              render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
                   <FormLabel className="text-right">Tech stack</FormLabel>
                   <FormControl className="col-span-3">
                     <MultiSelect
-                      options={frameworksList}
-                      onValueChange={setSelectedFrameworks}
-                      defaultValue={selectedFrameworks}
-                      placeholder="Select frameworks"
+                      options={technologyList}
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      placeholder="Select technology"
                       variant="inverted"
                       animation={2}
                       maxCount={3}
+                      modalPopover={true}
+                      name="stacks"
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="description"

@@ -17,7 +17,7 @@ export default function AddWork() {
     <div className="w-full h-full relative">
       <Dialog>
         <DialogTrigger>
-          <ButtonCreate buttonName="Create new project" />
+          <ButtonCreate buttonName="Create new work" />
         </DialogTrigger>
         <DialogContent className={"w-1/2"}>
           <DialogHeader>

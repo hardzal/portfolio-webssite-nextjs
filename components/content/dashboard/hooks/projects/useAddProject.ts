@@ -31,7 +31,7 @@ export default function useAddProject() {
     mutateAsync: mutateStack,
     isSuccess,
   } = useMutation<ProjectResponse, Error, projectSchemaDTO>({
-    mutationKey: ["addStack"],
+    mutationKey: ["addProject"],
     mutationFn: async (data: projectSchemaDTO) => {
       const formData = new FormData();
       formData.append("title", data.title);
@@ -48,7 +48,6 @@ export default function useAddProject() {
       if (data.demo !== undefined) formData.append("repo", data.demo);
       if (data.github !== undefined) formData.append("demo", data.github);
 
-      console.log("hasil", formData);
       const response = await axiosInstance.post("/projects", formData);
 
       return response.data;

@@ -13,7 +13,6 @@ export default function useToken() {
 
   useEffect(() => {
     const token = Cookies.get("token");
-
     if (!token) {
       router.push("/auth/login");
       return;

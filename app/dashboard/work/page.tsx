@@ -37,6 +37,7 @@ export default function ExperiencePage() {
   const columns: ColumnDef<Work>[] = [
     {
       accessorKey: "id",
+      size: 15,
       header: ({ column }) => {
         return (
           <Button

@@ -43,14 +43,14 @@ export default function ActionTechnology({
             className="cursor-pointer"
             onClick={() => onEditTechnology(stack)}
           >
-            edit stack
+            edit project
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className="cursor-pointer text-red-600"
             onClick={() => onDeleteTechnology(stack.id)}
           >
-            delete stack
+            delete project
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -45,6 +45,7 @@ export default function ProjectPage() {
   const columns: ColumnDef<Project>[] = [
     {
       accessorKey: "id",
+      size: 10,
       header: ({ column }) => {
         return (
           <Button
