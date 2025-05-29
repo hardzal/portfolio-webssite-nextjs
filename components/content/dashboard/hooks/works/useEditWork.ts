@@ -20,16 +20,37 @@ export default function useEditWork({ id }: { id: number }) {
     defaultValues: {},
   });
 
-  const { isPending: isPendingWork, mutateAsync: mutateStack } = useMutation<
-    WorkResponse,
-    Error,
-    workSchemaDTO
-  >({
+  const {
+    isPending: isPendingWork,
+    mutateAsync: mutateStack,
+    isSuccess,
+  } = useMutation<WorkResponse, Error, workSchemaDTO>({
     mutationKey: ["editWork", id],
     mutationFn: async (data: workSchemaDTO) => {
       const formData = new FormData();
-      formData.append("title", data.title);
+      formData.append("role", data.role);
+      formData.append("company", data.company);
 
+      if (data.startDate) {
+        formData.append("startDate", String(data.startDate.toString()));
+      }
+
+      if (data.endDate) {
+        formData.append("endDate", String(data.endDate.toString()));
+      }
+
+      if (data.image) {
+        formData.append("image", data.image);
+      }
+
+      data.stacks?.forEach((item) => {
+        formData.append(`stacks`, item);
+      });
+
+      data.description?.forEach((item) => {
+        formData.append("description", item.value);
+      });
+      console.log("update", data);
       const response = await axiosInstance.put(`/works/${id}`, formData);
 
       return response.data;
@@ -37,7 +58,7 @@ export default function useEditWork({ id }: { id: number }) {
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["dataWork"],
+        queryKey: ["dataWorks"],
       });
 
       toast.success("", {
@@ -72,6 +93,7 @@ export default function useEditWork({ id }: { id: number }) {
   return {
     form,
     isPendingWork,
+    isSuccess,
     onSubmitWork,
     handlePreview,
     previewURL,

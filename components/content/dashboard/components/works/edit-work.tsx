@@ -26,6 +26,7 @@ export default function EditWork({
   };
   const {
     form,
+    isSuccess,
     isPendingWork,
     onSubmitWork,
     handlePreview,
@@ -35,13 +36,31 @@ export default function EditWork({
 
   useEffect(() => {
     if (data) {
+      const normalized = data.description.map((val) => ({ value: val }));
+      form.reset({
+        role: data.role,
+        company: data.company,
+        startDate: data.start_date,
+        endDate: data.end_date,
+        stacks: data.stacks,
+        description: normalized,
+        image: undefined,
+      });
+
       setPreviewURL(data.image);
     }
   }, [data, form, setPreviewURL]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setShowDialog(false);
+    }
+  }, [isSuccess, setShowDialog]);
+
   return (
     <div className="w-full h-full relative">
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className={"w-1/2"}>
+        <DialogContent className={"w-1/2 max-h-screen overflow-y-auto"}>
           <DialogHeader>
             <DialogTitle>Edit A Work</DialogTitle>
             <DialogDescription></DialogDescription>

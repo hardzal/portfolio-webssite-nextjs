@@ -1,6 +1,5 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Switch } from "@/components/ui/switch";
 import { format } from "date-fns";
 import {
   Form,
@@ -8,6 +7,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { MultiSelect } from "@/components/ui/multi-select";
@@ -27,6 +27,7 @@ import { Technology } from "@/types/technology";
 import { axiosInstance } from "@/configs/axios";
 import { useQuery } from "@tanstack/react-query";
 import SpinnerButton from "@/components/content/auth/components/Spinner";
+import { useFieldArray } from "react-hook-form";
 
 interface WorkProps {
   form: any;
@@ -68,14 +69,19 @@ export default function WorkForm({
     });
   }
 
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "description",
+  });
+
   return (
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmitWork)}>
-          <div className="grid gap-4 py-4">
+          <div className="grid gap-5 py-4">
             <FormField
               control={form.control}
-              name="title"
+              name="role"
               render={({ field }) => (
                 <FormItem className="grid grid-cols-4 items-center gap-4">
                   <FormLabel className="text-right">Job Title</FormLabel>
@@ -87,6 +93,7 @@ export default function WorkForm({
                       className={""}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -105,6 +112,7 @@ export default function WorkForm({
                       className={""}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -113,44 +121,49 @@ export default function WorkForm({
               control={form.control}
               name="startDate"
               render={({ field }) => (
-                <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-right">Start date</FormLabel>
-                  <FormControl className="col-span-3">
-                    <Popover modal={true}>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "PPP")
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={
-                            field.value ? new Date(field.value) : undefined
-                          }
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date > new Date() || date < new Date("1900-01-01")
-                          }
-                          initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
-                  </FormControl>
-                </FormItem>
+                <>
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Start date</FormLabel>
+                    <FormControl className="col-span-3">
+                      <Popover modal={true}>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-[240px] pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={
+                              field.value ? new Date(field.value) : undefined
+                            }
+                            onSelect={field.onChange}
+                            disabled={(date) =>
+                              date > new Date() || date < new Date("1900-01-01")
+                            }
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </FormControl>
+                  </FormItem>
+                  <FormItem className="grid grid-cols-4">
+                    <FormMessage className="col-span-4 text-center" />
+                  </FormItem>
+                </>
               )}
             />
 
@@ -158,61 +171,49 @@ export default function WorkForm({
               control={form.control}
               name="endDate"
               render={({ field }) => (
-                <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-right">End date</FormLabel>
-                  <FormControl className="col-span-3">
-                    <Popover modal={true}>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "PPP")
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={
-                            field.value ? new Date(field.value) : undefined
-                          }
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date > new Date() || date < new Date("1900-01-01")
-                          }
-                          initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="status"
-              render={({ field }) => (
-                <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-left">Active</FormLabel>
-                  <FormControl className="col-span-3">
-                    <Switch
-                      id="status"
-                      onCheckedChange={field.onChange}
-                      checked={field.value}
-                    />
-                  </FormControl>
-                </FormItem>
+                <>
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">End date</FormLabel>
+                    <FormControl className="col-span-2">
+                      <Popover modal={true}>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-[240px] pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={
+                              field.value ? new Date(field.value) : undefined
+                            }
+                            onSelect={field.onChange}
+                            disabled={(date) =>
+                              date > new Date() || date < new Date("1900-01-01")
+                            }
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </FormControl>
+                  </FormItem>
+                  <FormItem className="grid grid-cols-4">
+                    <FormMessage className="col-span-4 text-center" />
+                  </FormItem>
+                </>
               )}
             />
 
@@ -233,6 +234,7 @@ export default function WorkForm({
                       }}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -270,27 +272,50 @@ export default function WorkForm({
                       name="stacks"
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-right">Description</FormLabel>
-                  <FormControl className="col-span-3">
-                    <Textarea
-                      placeholder="type your work description"
-                      rows={20}
-                      {...field}
-                      className={""}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+            {fields.map((field, index) => (
+              <FormField
+                key={field.id}
+                control={form.control}
+                name={`description.${index}.value`}
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <div className="flex flex-col">
+                      <FormLabel className="text-right">Description</FormLabel>
+                      <Button
+                        variant="destructive"
+                        type="button"
+                        size="sm"
+                        onClick={() => remove(index)}
+                        className="w-2/3 mt-2 bg-red-800 cursor-pointer"
+                      >
+                        remove
+                      </Button>
+                    </div>
+                    <FormControl className="col-span-3">
+                      <Textarea
+                        placeholder="type your work description"
+                        rows={30}
+                        {...field}
+                        className={""}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            ))}
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => append({ value: "" })}
+            >
+              Add Description
+            </Button>
           </div>
           <div className="flex justify-end">
             <Button

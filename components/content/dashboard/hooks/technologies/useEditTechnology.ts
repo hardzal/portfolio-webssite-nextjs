@@ -37,9 +37,11 @@ export default function useEditTechnology({
     mutationFn: async (data: technologySchemaDTO) => {
       const formData = new FormData();
       formData.append("name", data.name);
+
       if (data?.image != null) {
         formData.append("image", data.image);
       }
+
       const response = await axiosInstance.put(`/stacks/${id}`, formData);
 
       return response.data;

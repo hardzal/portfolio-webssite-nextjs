@@ -34,7 +34,7 @@ export default function ExperiencePage() {
   const { deleteWork, isPendingWork } = useDeleteWork();
 
   const { isLoading: isLoadingWorks, data: dataWorks } = useQuery<Work[]>({
-    queryKey: ["dataWork"],
+    queryKey: ["dataWorks"],
     queryFn: async () => {
       const response = await axiosInstance.get("/works");
 
@@ -96,7 +96,7 @@ export default function ExperiencePage() {
           row={row}
           onEditWork={(item) => {
             setSelectedItem(item);
-            setOpenDialog(true);
+            setOpenDialogEdit(true);
           }}
           onDeleteWork={(item) => {
             setSelectedItem(item);

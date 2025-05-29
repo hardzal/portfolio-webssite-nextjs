@@ -42,7 +42,7 @@ export default function AddWork({
         <DialogTrigger>
           <ButtonCreate buttonName="Create new work" />
         </DialogTrigger>
-        <DialogContent className={"w-1/2"}>
+        <DialogContent className={"w-1/2 max-h-screen overflow-y-auto"}>
           <DialogHeader>
             <DialogTitle>Create A New Experience</DialogTitle>
             <DialogDescription></DialogDescription>

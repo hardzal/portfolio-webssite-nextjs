@@ -31,7 +31,9 @@ export default function useAddTechnology() {
     mutationFn: async (data: technologySchemaDTO) => {
       const formData = new FormData();
       formData.append("name", data.name);
-      formData.append("image", data.image);
+      if (data.image) {
+        formData.append("image", data.image as Blob);
+      }
       const response = await axiosInstance.post("/stacks", formData);
 
       return response.data;

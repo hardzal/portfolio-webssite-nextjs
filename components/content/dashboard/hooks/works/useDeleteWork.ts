@@ -1,4 +1,5 @@
 import { axiosInstance } from "@/configs/axios";
+import { Work } from "@/types/work";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -7,15 +8,15 @@ export default function useDeleteWork() {
 
   const { mutateAsync: deleteWork, isPending: isPendingWork } = useMutation({
     mutationKey: ["deleteWork"],
-    mutationFn: async (id: number) => {
-      await axiosInstance.delete(`/works/${id}`);
+    mutationFn: async (data: Work) => {
+      await axiosInstance.delete(`/works/${data.id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["dataWork"],
+        queryKey: ["dataWorks"],
       });
       toast.success("", {
-        description: "sucess delete work",
+        description: "success delete work",
       });
     },
     onError: () => {

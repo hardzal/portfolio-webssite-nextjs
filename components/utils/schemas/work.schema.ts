@@ -1,13 +1,14 @@
 import { z } from "zod";
 
 export const workSchema = z.object({
-  title: z.string().min(10).max(100),
+  role: z.string().min(10).max(100),
   company: z.string().min(10).max(100),
-  description: z.string().min(20).max(300).array().optional(),
+  description: z
+    .array(z.object({ value: z.string().min(10).max(300) }))
+    .optional(),
   stacks: z.string().array().optional(),
-  startDate: z.string().optional(),
-  endDate: z.string().optional(),
-  status: z.boolean().optional(),
+  startDate: z.date().or(z.string()).optional(),
+  endDate: z.date().or(z.string()).optional(),
   image: z.instanceof(File).optional(),
 });
 

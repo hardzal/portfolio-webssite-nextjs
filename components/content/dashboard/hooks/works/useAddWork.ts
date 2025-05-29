@@ -18,11 +18,11 @@ export default function useAddWork() {
     mode: "onChange",
     resolver: zodResolver(workSchema),
     defaultValues: {
-      title: "",
+      role: "",
       company: "",
-      description: [],
-      startDate: "",
-      status: false,
+      description: [{ value: "" }],
+      startDate: new Date(),
+      endDate: undefined,
       stacks: [],
     },
   });
@@ -35,16 +35,16 @@ export default function useAddWork() {
     mutationKey: ["addWork"],
     mutationFn: async (data: workSchemaDTO) => {
       const formData = new FormData();
-      formData.append("role", data.title);
+      console.log("works", data);
+      formData.append("role", data.role);
       formData.append("company", data.company);
-      formData.append("status", String(data.status));
 
       if (data.startDate) {
-        formData.append("startDate", String(data.startDate));
+        formData.append("startDate", String(data.startDate.toString()));
       }
 
       if (data.endDate) {
-        formData.append("endDate", String(data.endDate));
+        formData.append("endDate", String(data.endDate.toString()));
       }
 
       if (data.image) {
@@ -55,8 +55,11 @@ export default function useAddWork() {
         formData.append(`stacks`, item);
       });
 
-      const response = await axiosInstance.post("/works", formData);
+      data.description?.forEach((item) => {
+        formData.append("description", item.value);
+      });
 
+      const response = await axiosInstance.post("/works", formData);
       return response.data;
     },
 

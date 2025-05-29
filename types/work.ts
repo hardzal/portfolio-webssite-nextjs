@@ -1,10 +1,10 @@
 export type Work = {
   id: number;
-  title: string;
+  role: string;
   company: string;
   description: string[];
-  technologies?: string[];
-  status: boolean;
-  period: string;
+  stacks?: string[];
+  start_date: Date;
+  end_date: Date;
   image: string;
 };
