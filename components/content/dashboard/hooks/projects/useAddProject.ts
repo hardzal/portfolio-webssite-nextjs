@@ -71,7 +71,6 @@ export default function useAddProject() {
   });
 
   async function onSubmitProject(data: projectSchemaDTO) {
-    console.log("Data get", data);
     await mutateStack(data);
     form.reset();
     setPreviewURL("");

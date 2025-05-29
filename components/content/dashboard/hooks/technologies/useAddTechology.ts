@@ -57,7 +57,6 @@ export default function useAddTechnology() {
   });
 
   async function onSubmitStack(data: technologySchemaDTO) {
-    console.log("Data get", data);
     await mutateStack(data);
     form.reset();
     setPreviewURL("");
@@ -72,7 +71,6 @@ export default function useAddTechnology() {
 
       form.setValue("image", file);
     }
-    console.log("tidak ada gambar");
   }
 
   return {

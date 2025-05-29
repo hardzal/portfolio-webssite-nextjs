@@ -35,7 +35,6 @@ export default function useAddWork() {
     mutationKey: ["addWork"],
     mutationFn: async (data: workSchemaDTO) => {
       const formData = new FormData();
-      console.log("works", data);
       formData.append("role", data.role);
       formData.append("company", data.company);
 
@@ -81,7 +80,6 @@ export default function useAddWork() {
   });
 
   async function onSubmitWork(data: workSchemaDTO) {
-    console.log("Data get", data);
     await mutateStack(data);
     form.reset();
     setPreviewURL("");

@@ -64,7 +64,6 @@ export default function useEditTechnology({
     },
   });
   async function onSubmitStack(data: technologySchemaDTO) {
-    console.log("Data get", data);
     await mutateStack(data);
     form.reset();
     setPreviewURL("");
@@ -79,7 +78,6 @@ export default function useEditTechnology({
 
       form.setValue("image", file);
     }
-    console.log("tidak ada gambar");
   }
 
   return {

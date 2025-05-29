@@ -10,8 +10,6 @@ export default function useDeleteTechnology() {
     useMutation({
       mutationKey: ["deleteStack"],
       mutationFn: async (data: Technology) => {
-        console.log("data deleted stack", data.id);
-
         await axiosInstance.delete(`/stacks/${data.id}`);
       },
       onSuccess: () => {

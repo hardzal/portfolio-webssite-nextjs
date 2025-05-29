@@ -78,7 +78,6 @@ export default function useEditProject({ id }: { id: number }) {
 
       form.setValue("image", file);
     }
-    console.log("tidak ada gambar");
   }
 
   return {

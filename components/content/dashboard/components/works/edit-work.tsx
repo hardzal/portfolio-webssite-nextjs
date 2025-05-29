@@ -37,6 +37,7 @@ export default function EditWork({
   useEffect(() => {
     if (data) {
       const normalized = data.description.map((val) => ({ value: val }));
+
       form.reset({
         role: data.role,
         company: data.company,

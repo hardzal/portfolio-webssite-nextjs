@@ -44,7 +44,6 @@ export default function useLogin() {
 
     onError: (error) => {
       const errorMessage = error.message;
-      console.log("hello error kamu");
 
       toast.error("Login failed", {
         description: errorMessage,
@@ -52,7 +51,6 @@ export default function useLogin() {
     },
 
     onSuccess: async () => {
-      console.log("hello sukses kamu");
       toast.success("Login success", {
         description: "success login",
       });

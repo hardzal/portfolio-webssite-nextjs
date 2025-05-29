@@ -50,7 +50,6 @@ export default function useEditWork({ id }: { id: number }) {
       data.description?.forEach((item) => {
         formData.append("description", item.value);
       });
-      console.log("update", data);
       const response = await axiosInstance.put(`/works/${id}`, formData);
 
       return response.data;
@@ -87,7 +86,6 @@ export default function useEditWork({ id }: { id: number }) {
 
       form.setValue("image", file);
     }
-    console.log("tidak ada gambar");
   }
 
   return {

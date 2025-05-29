@@ -10,7 +10,6 @@ export default function useDeleteProject() {
     useMutation({
       mutationKey: ["deleteProject"],
       mutationFn: async (data: Project) => {
-        console.log("data deleted", data);
         await axiosInstance.delete(`/projects/${data.id}`);
       },
       onSuccess: () => {
