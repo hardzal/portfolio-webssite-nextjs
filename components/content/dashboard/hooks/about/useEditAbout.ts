@@ -1,3 +1,4 @@
+"use client";
 import {
   aboutSchema,
   aboutSchemaDTO,
@@ -10,7 +11,7 @@ import { AboutResponse } from "../../types/about/about-response";
 import { axiosInstance } from "@/configs/axios";
 import { toast } from "sonner";
 
-export default function useEditAbout({ id }: { id: number }) {
+export default function useEditAbout({ id }: { id: number | undefined }) {
   const queryClient = useQueryClient();
   const [previewURL, setPreviewURL] = useState<string | null>(null);
 
@@ -19,12 +20,13 @@ export default function useEditAbout({ id }: { id: number }) {
     resolver: zodResolver(aboutSchema),
     defaultValues: {
       title: "",
-      job_title: "",
+      profession: "",
       description: "",
       location: "",
       handphone: "",
       email: "",
       resume: "",
+      image: undefined,
       status: true,
     },
   });
@@ -38,7 +40,7 @@ export default function useEditAbout({ id }: { id: number }) {
     mutationFn: async (data: aboutSchemaDTO) => {
       const formData = new FormData();
       formData.append("title", data.title);
-      formData.append("profession", data.job_title);
+      formData.append("profession", data.profession);
 
       if (data.description) {
         formData.append("description", data.description);

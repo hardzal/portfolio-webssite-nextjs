@@ -1,10 +1,12 @@
 export type About = {
   id: number;
   title: string;
-  job_title: string;
+  profession: string;
   description: string;
   location: string;
-  status: boolean;
+  is_available: boolean;
+  handphone: string;
+  email: string;
+  resume: string;
   image: string;
-  links: string[];
 };
