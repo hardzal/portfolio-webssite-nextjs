@@ -104,7 +104,7 @@ export default function TechnologiesPage() {
   }
 
   return (
-    <div className={"flex flex-col p-5 w-full py-5"}>
+    <div className={"flex flex-col w-full py-5"}>
       <div className={"flex flex-col gap-5"}>
         <h2 className={"text-2xl"}>Technology Page</h2>
         <AddTechnology open={openDialogAdd} setOpen={setOpenDialogAdd} />

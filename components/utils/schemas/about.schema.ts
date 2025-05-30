@@ -5,7 +5,11 @@ export const aboutSchema = z.object({
   job_title: z.string().min(10).max(50),
   description: z.string().optional(),
   location: z.string().optional(),
-  status: z.boolean().default(true),
+  status: z.boolean(),
   image: z.instanceof(File).optional(),
-  links: z.string().array().optional(),
+  email: z.string(),
+  resume: z.string(),
+  handphone: z.string(),
 });
+
+export type aboutSchemaDTO = z.infer<typeof aboutSchema>;

@@ -7,6 +7,7 @@
 
 ## Progress
 
+- [ ] Landing Page
 - [x] CRUD Projects
 - [x] CRUD Works
 - [x] CRUD Stacks
