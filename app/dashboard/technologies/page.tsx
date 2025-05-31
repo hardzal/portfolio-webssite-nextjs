@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import AddTechnology from "../../../components/content/dashboard/components/technologies/add-technology";
 import { DataTable } from "./data-table";
 import { Technology } from "@/types/technology";
-import { useQuery } from "@tanstack/react-query";
-import { axiosInstance } from "@/configs/axios";
 import SpinnerButton from "@/components/content/auth/components/Spinner";
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
@@ -14,6 +12,7 @@ import ActionTechnology from "@/components/content/dashboard/components/technolo
 import useDeleteTechnology from "@/components/content/dashboard/hooks/technologies/useDeleteTechnology";
 import DeleteTechnology from "@/components/content/dashboard/components/technologies/delete-technology";
 import EditTechnology from "@/components/content/dashboard/components/technologies/edit-technology";
+import useGetStack from "@/components/content/dashboard/hooks/technologies/useGetStack";
 
 interface ActionProps {
   data: Technology | null;
@@ -31,17 +30,7 @@ export default function TechnologiesPage() {
 
   const { deleteTechnology, isPendingTechnology } = useDeleteTechnology();
 
-  const { isLoading: isLoadingTechnologies, data: dataTechnology } = useQuery<
-    Technology[],
-    Error
-  >({
-    queryKey: ["dataTechnology"],
-    queryFn: async () => {
-      const response = await axiosInstance.get("/stacks");
-
-      return response.data.data;
-    },
-  });
+  const { isLoadingTechnologies, dataTechnology } = useGetStack();
 
   const columns: ColumnDef<Technology>[] = [
     {

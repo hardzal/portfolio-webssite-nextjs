@@ -4,8 +4,12 @@ import "@/styles/home.css";
 import Image from "next/image";
 import { Marquee } from "@devnomic/marquee";
 import "@/styles/marquee.css";
+import useGetStack from "../dashboard/hooks/technologies/useGetStack";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function TechStack() {
+  const { dataTechnology, isLoadingTechnologies } = useGetStack();
+
   return (
     <>
       <h2 className={"text-3xl mt-5 mb-15 font-semibold"}>
@@ -18,92 +22,31 @@ export default function TechStack() {
         className="motion-reduce:overflow-auto gap-[5rem] [--duration:15s] overflow-x-hidden"
         innerClassName="motion-reduce:animate-none motion-reduce:first:hidden gap-[5rem] [--gap:5rem]"
       >
-        <div
-          className={"flex flex-col items-center justify-center align-middle"}
-        >
-          <Image
-            src={"/skills/javascript.png"}
-            alt={"javascript"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Javascript</span>
-        </div>
-        <div className={"flex flex-col items-center justify-center"}>
-          <Image
-            src={"/skills/typescript.png"}
-            alt={"Typescript"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Typescript</span>
-        </div>
-        <div className={"flex flex-col items-center justify-center"}>
-          <Image
-            src={"/skills/express.png"}
-            alt={"express"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Express</span>
-        </div>
-        <div className={"flex flex-col items-center justify-center"}>
-          <Image
-            src={"/skills/golang.png"}
-            alt={"golang"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Golang</span>
-        </div>
-        <div className={"flex flex-col items-center justify-center"}>
-          <Image
-            src={"/skills/postgresql.png"}
-            alt={"postgresql"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Postgresql</span>
-        </div>
-        <div className={"flex flex-col items-center justify-center"}>
-          <Image
-            src={"/skills/laravel.png"}
-            alt={"laravel"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Laravel</span>
-        </div>
-        <div className={"flex flex-col items-center justify-center"}>
-          <Image
-            src={"/skills/python.png"}
-            alt={"python"}
-            width={64}
-            height={64}
-            className={
-              "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-            }
-          />
-          <span>Python</span>
-        </div>
+        {isLoadingTechnologies ? (
+          <Skeleton className={"h-16 w-[64px]"} />
+        ) : (
+          dataTechnology?.map((item) => (
+            <>
+              <div
+                className={
+                  "flex flex-col items-center justify-center align-middle"
+                }
+                key={item.image + item.id}
+              >
+                <Image
+                  src={`${item.image}`}
+                  alt={"javascript"}
+                  width={64}
+                  height={64}
+                  className={
+                    "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
+                  }
+                />
+                <span>{item.name}</span>
+              </div>
+            </>
+          ))
+        )}
       </Marquee>
       {/* <Swiper
         // install Swiper modules
