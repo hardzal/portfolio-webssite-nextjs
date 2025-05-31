@@ -11,5 +11,5 @@
 - [x] CRUD Projects
 - [x] CRUD Works
 - [x] CRUD Stacks
-- [ ] CRUD About
+- [x] CRUD About
 - [ ] Responsive UI

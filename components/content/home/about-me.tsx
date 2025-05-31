@@ -1,9 +1,15 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { Button } from "../../ui/button";
 import { MapPin } from "lucide-react";
+import useGetAbout from "../dashboard/hooks/about/useGetAbout";
+import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 
 export default function AboutMe() {
+  const { isLoadingAbout, dataAbout } = useGetAbout({ id: 1 });
+
   return (
     <>
       <section
@@ -11,17 +17,21 @@ export default function AboutMe() {
           "flex flex-col basis-1/3 justify-center align-middle items-center"
         }
       >
-        <Image
-          src={`/photos/example.jpg`}
-          alt={"My Profile Photo"}
-          style={{
-            maxWidth: "300px",
-            height: "auto",
-          }}
-          width={300}
-          height={300}
-          className={"rounded-lg mx-auto b"}
-        />
+        {isLoadingAbout ? (
+          <Skeleton className="min-h-36 w-[200px]" />
+        ) : (
+          <Image
+            src={`${dataAbout?.image}`}
+            alt={"My Profile Photo"}
+            style={{
+              maxWidth: "300px",
+              height: "auto",
+            }}
+            width={300}
+            height={300}
+            className={"rounded-lg mx-auto b"}
+          />
+        )}
       </section>
       <section
         className={
@@ -33,18 +43,29 @@ export default function AboutMe() {
             "flex flex-col gap-5 max-sm:items-center max-sm:justify-center"
           }
         >
-          <h1 className={"text-4xl font-semibold max-md:text-center"}>
-            {"Hi, I'm Rizal"}
-          </h1>
-          <p className={"max-md:text-center text-lg"}>
-            Fullstack Developer & AI Enthusiast
-          </p>
-          <p className={"max-md:text-center"}>
-            I am a Fullstack Developer with a passion for creating web
-            applications. I have experience in both frontend and backend
-            development, and I enjoy working with modern technologies to build
-            efficient and user-friendly applications.
-          </p>
+          {isLoadingAbout ? (
+            <Skeleton className={"h-4 w-[100px]"} />
+          ) : (
+            <h1 className={"text-4xl font-semibold max-md:text-center"}>
+              {`${dataAbout?.title}`}
+            </h1>
+          )}
+
+          {isLoadingAbout ? (
+            <Skeleton className={"h-6 w-[150px]"} />
+          ) : (
+            <p className={"max-md:text-center text-lg"}>
+              {`${dataAbout?.profession}`}
+            </p>
+          )}
+
+          {isLoadingAbout ? (
+            <Skeleton className={"h-12 w-[200px]"} />
+          ) : (
+            <p className={"max-md:text-center"}>
+              {`${dataAbout?.description}`}
+            </p>
+          )}
 
           <p
             className={
@@ -52,38 +73,49 @@ export default function AboutMe() {
             }
           >
             <MapPin className={"mr-3"} />
-            <span>Depok, Sawangan, Indonesia</span>
+            {isLoadingAbout ? (
+              <Skeleton className={"h-4 w-[100px]"} />
+            ) : (
+              <span>{dataAbout?.location}</span>
+            )}
           </p>
 
           <div
             className={"flex flex-row gap-5 max-md:justify-center items-center"}
           >
-            <Button
-              className={
-                "bg-green-500 hover:bg-green-400 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
-              }
+            <Link
+              href={`https://wa.me/${dataAbout?.handphone}`}
+              target="_blank"
             >
-              <Image
-                src={"/icons/whatsapp.svg"}
-                alt={"email icon"}
-                width={16}
-                height={16}
-              />
-              <span>{"Let's talk"}</span>
-            </Button>
-            <Button
-              className={
-                "bg-black cursor-pointer hover:bg-gray-700 text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 "
-              }
-            >
-              <Image
-                src={"/icons/document.svg"}
-                alt={"email icon"}
-                width={16}
-                height={16}
-              />
-              <span>{"Download CV"}</span>
-            </Button>
+              <Button
+                className={
+                  "bg-green-500 hover:bg-green-400 cursor-pointer text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 hover:text-black"
+                }
+              >
+                <Image
+                  src={"/icons/whatsapp.svg"}
+                  alt={"email icon"}
+                  width={16}
+                  height={16}
+                />
+                <span>{"Let's talk"}</span>
+              </Button>
+            </Link>
+            <Link href={`${dataAbout?.resume}`}>
+              <Button
+                className={
+                  "bg-black cursor-pointer hover:bg-gray-700 text-white py-5 px-8 text-lg font-medium flex flex-row gap-2 "
+                }
+              >
+                <Image
+                  src={"/icons/document.svg"}
+                  alt={"email icon"}
+                  width={16}
+                  height={16}
+                />
+                <span>{"Download CV"}</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

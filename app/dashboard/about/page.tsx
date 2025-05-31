@@ -17,7 +17,7 @@ interface aboutProps {
 }
 
 export default function AboutPage() {
-  const { isLoadingAbout, dataAbout } = useGetAbout();
+  const { isLoadingAbout, dataAbout } = useGetAbout({ id: 1 });
 
   const {
     form,
