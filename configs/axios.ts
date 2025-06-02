@@ -1,8 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-
+console.log("URL", process.env.NEXT_PUBLIC_API_URL);
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:3005/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 axiosInstance.interceptors.request.use(

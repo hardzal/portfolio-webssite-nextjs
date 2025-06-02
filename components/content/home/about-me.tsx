@@ -23,13 +23,10 @@ export default function AboutMe() {
           <Image
             src={`${dataAbout?.image}`}
             alt={"My Profile Photo"}
-            style={{
-              maxWidth: "300px",
-              height: "auto",
-            }}
             width={300}
             height={300}
             className={"rounded-lg mx-auto b"}
+            unoptimized
           />
         )}
       </section>
@@ -67,7 +64,7 @@ export default function AboutMe() {
             </p>
           )}
 
-          <p
+          <div
             className={
               "flex max-md:flex-row max-md:items-center max-md:justify-center"
             }
@@ -78,7 +75,7 @@ export default function AboutMe() {
             ) : (
               <span>{dataAbout?.location}</span>
             )}
-          </p>
+          </div>
 
           <div
             className={"flex flex-row gap-5 max-md:justify-center items-center"}

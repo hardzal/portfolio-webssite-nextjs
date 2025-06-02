@@ -1,11 +1,19 @@
+// next.config.js atau next.config.mjs
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
-      new URL("https://images.unsplash.com/**"),
-      new URL("https://res.cloudinary.com/**"),
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
     ],
   },
 };

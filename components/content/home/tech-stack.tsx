@@ -16,6 +16,7 @@ export default function TechStack() {
         Tech Stack - Tools I use everyday
       </h2>
       <Marquee
+        key={"1"}
         fade={true}
         reverse={true}
         pauseOnHover={true}
@@ -25,26 +26,24 @@ export default function TechStack() {
         {isLoadingTechnologies ? (
           <Skeleton className={"h-16 w-[64px]"} />
         ) : (
-          dataTechnology?.map((item) => (
-            <>
-              <div
+          dataTechnology?.map((item, index) => (
+            <div
+              className={
+                "flex flex-col items-center justify-center align-middle"
+              }
+              key={item.image + item.id + index}
+            >
+              <Image
+                src={`${item.image}`}
+                alt={"javascript"}
+                width={64}
+                height={64}
                 className={
-                  "flex flex-col items-center justify-center align-middle"
+                  "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
                 }
-                key={item.image + item.id}
-              >
-                <Image
-                  src={`${item.image}`}
-                  alt={"javascript"}
-                  width={64}
-                  height={64}
-                  className={
-                    "object-contain bg-gray-200 dark:bg-gray-600 rounded-lg p-3"
-                  }
-                />
-                <span>{item.name}</span>
-              </div>
-            </>
+              />
+              <span>{item.name}</span>
+            </div>
           ))
         )}
       </Marquee>
