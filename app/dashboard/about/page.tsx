@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import AboutForm from "@/components/content/dashboard/components/about/about-form";
 import useEditAbout from "@/components/content/dashboard/hooks/about/useEditAbout";
 import useGetAbout from "@/components/content/dashboard/hooks/about/useGetAbout";

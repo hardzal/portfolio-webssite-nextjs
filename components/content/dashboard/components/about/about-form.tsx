@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import { Button } from "@/components/ui/button";
 import {
   FormControl,

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { DataTable } from "./data-table";
 import { axiosInstance } from "@/configs/axios";
 import { useQuery } from "@tanstack/react-query";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 

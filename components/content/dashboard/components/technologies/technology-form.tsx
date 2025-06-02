@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import { FormProvider } from "react-hook-form";
 
 interface TechnologyProps {

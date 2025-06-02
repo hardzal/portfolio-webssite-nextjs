@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { MultiSelect } from "@/components/ui/multi-select";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import { Button } from "@/components/ui/button";
 import { Technology } from "@/types/technology";
 import { useQuery } from "@tanstack/react-query";

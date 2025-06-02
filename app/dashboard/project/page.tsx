@@ -7,7 +7,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { axiosInstance } from "@/configs/axios";
 import { useQuery } from "@tanstack/react-query";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import AddProject from "@/components/content/dashboard/components/projects/add-project";
 import { Button } from "@/components/ui/button";
 import ActionProject from "@/components/content/dashboard/components/projects/action-project";

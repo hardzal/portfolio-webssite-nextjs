@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import AddTechnology from "../../../components/content/dashboard/components/technologies/add-technology";
 import { DataTable } from "./data-table";
 import { Technology } from "@/types/technology";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";

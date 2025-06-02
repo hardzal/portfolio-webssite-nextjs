@@ -26,7 +26,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Technology } from "@/types/technology";
 import { axiosInstance } from "@/configs/axios";
 import { useQuery } from "@tanstack/react-query";
-import SpinnerButton from "@/components/content/auth/components/Spinner";
+import SpinnerButton from "@/components/content/auth/components/spinner-button";
 import { useFieldArray } from "react-hook-form";
 
 interface WorkProps {

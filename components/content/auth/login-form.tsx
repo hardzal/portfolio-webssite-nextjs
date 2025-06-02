@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import React from "react";
-import SpinnerButton from "./components/Spinner";
+import SpinnerButton from "./components/spinner-button";
 import useLogin from "./hooks/useLogin";
 
 export default function LoginForm() {
