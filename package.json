@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install --force && next build"
+    "vercel-build": "npm install --legacy-per-deeps && next build"
   },
   "dependencies": {
     "@devnomic/marquee": "^1.0.3",

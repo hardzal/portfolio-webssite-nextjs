@@ -24,6 +24,7 @@ export default function EditWork({
   const editProps: { id: number } = {
     id: data?.id as number,
   };
+
   const {
     form,
     isSuccess,
@@ -47,7 +48,7 @@ export default function EditWork({
         description: normalized,
         image: undefined,
       });
-
+      console.log("data work", data);
       setPreviewURL(data.image);
     }
   }, [data, form, setPreviewURL]);

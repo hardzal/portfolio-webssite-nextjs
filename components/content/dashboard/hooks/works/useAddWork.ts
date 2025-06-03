@@ -39,11 +39,11 @@ export default function useAddWork() {
       formData.append("company", data.company);
 
       if (data.startDate) {
-        formData.append("startDate", String(data.startDate.toString()));
+        formData.append("startDate", String(data.startDate.toLocaleString()));
       }
 
       if (data.endDate) {
-        formData.append("endDate", String(data.endDate.toString()));
+        formData.append("endDate", String(data.endDate.toLocaleString()));
       }
 
       if (data.image) {

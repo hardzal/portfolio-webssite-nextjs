@@ -136,7 +136,7 @@ export default function WorkForm({
                               )}
                             >
                               {field.value ? (
-                                format(field.value, "PPP")
+                                format(new Date(field.value), "PPP")
                               ) : (
                                 <span>Pick a date</span>
                               )}
@@ -186,7 +186,7 @@ export default function WorkForm({
                               )}
                             >
                               {field.value ? (
-                                format(field.value, "PPP")
+                                format(new Date(field.value), "PPP")
                               ) : (
                                 <span>Pick a date</span>
                               )}
